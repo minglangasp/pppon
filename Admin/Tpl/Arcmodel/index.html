@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=simple"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+artDialog.setdel = function (id,name,table) {
+    return artDialog({
+		title:'删除模型：'+ name,
+        id: 'setdel',
+        fixed: true,
+        lock: true,
+        opacity: .1,
+        content: [
+            '<div style="margin-bottom:5px;font-size:12px" id="art_content">',
+                '可选删除内容',
+            '</div>',
+            '<div>',
+                '附加表<font color=red>',table,'</font>: <input type="checkbox"  name="art_demo" id="art_demo"/>&nbsp;&nbsp;模型栏目数据: <input type="checkbox"  name="art_plugin" id="art_plugin"/>&nbsp;&nbsp;数据备份: <input type="checkbox"  name="art_backup" id="art_backup"/><br/>',
+				'<div style="margin-bottom:5px;margin-top:5px;font-size:12px">模型删除将不可恢复，请慎重处理，同时建议您备份数据库内容！</div>',
+            '</div>',
+            ].join(''),
+        ok: function (here) {
+			var url = '{:U('Arcmodel/del?id=')}'+ id;
+			if($('#art_demo').attr('checked')=='checked') url = url + '&addontable=1';
+			if($('#art_backup').attr('checked')=='checked') url = url + '&backup=1';
+			if($('#art_plugin').attr('checked')=='checked') url = url + '&typedata=1';
+			window.location.href=url;
+        },
+        cancel: true
+    });
+};
+</script>
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+  <td colspan="7" align="leftr" class="admintitle"><span style="float:right;"><a href="{:U('Arcmodel/import')}">[导入模型]</a>&nbsp;<a href="{:U('Market/model')}">[模型市场]</a></span>模型列表</td>
+</tr>
+    <tr bgcolor="#f1f3f5" style="font-weight:bold;">
+    <td width="5%" align="center" class="ButtonList">ID</td>
+    <td width="10%" align="center" class="ButtonList">模型名称</td>
+    <td width="15%" height="25" align="center" class="ButtonList">识别ID</td>
+    <td width="15%" height="25" align="center" class="ButtonList">附加表</td>
+    <td width="15%" height="25" align="center" class="ButtonList">状态</td>
+    <td width="15%" height="25" align="center" class="ButtonList">模型</td>
+    <td width="25%" height="25" align="center" class="ButtonList">管理选项</td>    
+    </tr>
+	<volist name="list" id="vo"> 
+    <tr>
+    <td height="25" bgcolor="f7f7f7">{$vo.id}</td>
+    <td height="25" bgcolor="f7f7f7">{$vo.typename}</td>
+    <td height="25" align="center" bgcolor="f7f7f7"><span class="td">{$vo.nid}</span></td>
+    <td height="25" align="center" bgcolor="f7f7f7"><span class="td">{:C('DB_PREFIX')}{$vo.addtable}</span></td>
+    <td height="25" align="center" bgcolor="f7f7f7"><span class="td"><eq name="vo.status" value="0">启用<else/>禁用</eq>-><a href="{:U('Arcmodel/status?id=')}{$vo.id}" style="text-decoration:underline;"><eq name="vo.status" value="1">启用<else/>禁用</eq></a></span></td>
+    <td height="25" align="center" bgcolor="f7f7f7"><span class="td"><eq name="vo.issystem" value="1">扩展<else/>系统</eq></span></td>
+    <td align="center" bgcolor="f7f7f7"><eq name="vo.issystem" value="1"><a href="javascript:;" onClick="artDialog.setdel({$vo.id},'{$vo.typename}','{$vo.addtable}')">删除</a><else/>系统模型不允许更改</eq></td>
+    </tr>
+	</volist>
+<tr><td bgcolor="f7f7f7" colspan="7">
+<div id="page">
+	<ul style="text-align:left;">
+{$page}
+    </ul>
+</div>
+</td></tr></table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

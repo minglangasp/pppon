@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme>
+<basic>
+<field tag="input" name="name" alt="主题名称" value="默认主题" extend="type='text' style='width:200px' readonly"/>
+<field tag="input" name="author" alt="主题作者" value="将军" extend="type='text' style='width:200px' readonly"/>
+<field tag="input" name="demo" alt="演示地址" value="http://www.pppon.com/demo?theme=a001" extend="type='text' style='width:200px' readonly"/>
+<field tag="input" name="company" alt="开发商" value="PPPON无界" extend="type='text' style='width:200px' readonly"/>
+<field tag="input" name="powerby" alt="POWERBY" value="Powered By PPPON.COM" extend="type='text' style='width:200px'"/>
+<field tag="input" name="powerlink" alt="POWERBY链接" value="http://www.pppon.com" extend="type='text' style='width:200px'"/>
+<field tag="input" name="lang" alt="语言版本1中文2英文" value="1" extend="type='text' style='width:200px'"/>
+</basic>
+<advance>
+<field tag="input" name="logo" alt="主题LOGO" value="" extend="type='text' style='width:200px'" editor="image"/>
+<field tag="input" name="logos" alt="第二logo" value="" extend="type='text' style='width:200px'" editor="file"/>
+<field tag="editor" alt='富文本' name="feditor" value="富文本" />
+<field tag="radio" alt='单项选择' select="" fullvalue="一,二,三,四,五" value="4" name="fradio" />
+<field tag="select" alt='下拉选项' select="" fullvalue="第一,第二,第三,第四,第五" value="4" name="fselect" />
+<field tag="textarea" alt='头部468x60广告位' name="ad-head-468x60" value="" />
+<field tag="textarea" alt='头部950x90广告位' name="ad-head-950x90" value="" />
+<field tag="textarea" alt='首页250x250广告位' name="ad-index-250x250" value="" />
+<field tag="textarea" alt='首页中部728x90广告位' name="ad-index-728x90" value="" />
+<field tag="textarea" alt='列表页中部300x250广告位' name="ad-list-300x250" value="" />
+<field tag="textarea" alt='文章页中部300x250广告位' name="ad-article-300x250" value="" />
+<field tag="textarea" alt='文章页中468x60广告位' name="ad-article-468x60" value="" />
+<field tag="textarea" alt='搜索页中部300x250广告位' name="ad-search-300x250" value="" />
+</advance>
+<extend>
+</extend>
+</theme>

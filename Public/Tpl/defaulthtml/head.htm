@@ -1,0 +1,61 @@
+<div id="minibg">
+    <div id="mini">
+	<div id="dlt"><if condition='USER_LOGINED==TRUE'><a href="{:App_url('Index/myfile','user')}">欢迎您,{:cookie('uname')}</a>&nbsp;<a href="{:App_url('Index/msg','user')}">站内短信</a>&nbsp;<a href="{:App_url('Archive/index?status=0','user')}">我的文档</a>&nbsp;<a href="{:App_url('Public/loginout?fromurl=','user')}{:curPageURL()}">退出</a><else/><a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://'+window.location.host+'');"><font color="black">设为首页</font></a>|<a onClick="window.external.AddFavorite(location.href,document.title)"><font color="black">加入收藏</font></a>|<a id="StranLink">繁体中文</a>|<a href="{:App_url('Public/login?fromurl=','user')}{:curPageURL()}">会员登录</a></if></div>
+	
+         <div id="notice">
+		 <dl id="marquee">
+           <wk:arclist row='5' orderby='pubdate desc'>
+		   <dt><a href="<field name='arcurl'/>"><field name='title'/></a></dt>
+		   </wk:arclist>
+         </dl>
+		 </div>
+		 <script type="text/javascript">
+				<!--
+				new Marquee("marquee",0,3,300,24,50,3000,3000)
+				//-->
+			</script>
+			
+    <div id="mini2"><script language="javascript" src="__THEME__/js/date.js"></script></div>
+	</div>
+</div>
+
+	<div id="head">
+		<div id="logo">
+			<img src="<wk:tplvar name='logo'/>"/>
+		</div>
+		<div id="banner">
+		<wk:tplvar name='ad-head-468x60'/>
+		</div>
+	</div>
+	<div id="menu_out">
+		<div id="menu_in">
+			<div id="menu">
+				<ul id="nav">
+					<LI><A class="nav_on" id="mynav0" onmouseover="javascript:qh(0);" href="<wk:global name='cfg_cmsurl'/>"><SPAN>首 页</SPAN></A></LI>
+					<wk:arctype type='top' row='9'>
+					<li class="menu_line"></li>
+					<li><a href="<field name='typeurl'/>" onmouseover="javascript:qh({$i});" id="mynav{$i}" class="nav_off"><span><field name='typename'/></span></a></li>
+					</wk:arctype>
+				</ul>
+				<div id="menu_con">
+					<div id="qh_con0" style="DISPLAY: block">
+						<ul></ul>
+					</div>
+				<wk:arctype type='top' row='9'>
+					<div id="qh_con{$i}" style="DISPLAY: none">
+						<ul>
+						<wk:arctype typeid="~typeid~" row='9' key='j'>
+							<li><a href="<field name='typeurl'/>"><span><field name='typename'/></span></A></LI><LI class="menu_line{$i}"></LI>
+						</wk:arctype>
+						</ul>
+					</div>
+			</wk:arctype>
+				</div>
+			</div>
+		</div>
+	</div> 
+	<wk:tplvar name='ad-head-950x90'/>
+	<div id="positionbg">
+	<div id="position"><wk:field name="position"/></div>
+	<div id="sousuo"><form name="search"  action="__SEARCH__"><input type="text" name="keyword"  value="<wk:global type='request' name='keyword' function='RemoveXSS(@me)'/>" id="kw" maxlength="60"><input type="submit" value="搜索" class="btn"></form></div>
+</div>

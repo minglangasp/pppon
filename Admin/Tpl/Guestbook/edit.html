@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery,Admin.setdate.WdatePicker"/>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<script>
+function killErrors() {
+return true;
+}
+window.onerror = killErrors;
+KindEditor.ready(function(K){
+				var colorpicker;
+				K('#colorpicker').bind('click', function(e) {
+					e.stopPropagation();
+					if (colorpicker) {
+						colorpicker.remove();
+						colorpicker = null;
+						return;
+					}
+					var colorpickerPos = K('#colorpicker').pos();
+					colorpicker = K.colorpicker({
+						x : colorpickerPos.x,
+						y : colorpickerPos.y + K('#colorpicker').height(),
+						z : 19811214,
+						selectedColor : 'default',
+						noColor : '无颜色',
+						click : function(color) {
+							K('#color').val(color);
+							K('#colorpicker').css("background",color);
+							colorpicker.remove();
+							colorpicker = null;
+						}
+					});
+				});
+				K(document).click(function() {
+					if (colorpicker) {
+						colorpicker.remove();
+						colorpicker = null;
+					}
+				});
+				var editor = K.editor({
+					allowFileManager : true
+				});
+
+	K('#litpic-up').click(function() {
+					editor.loadPlugin('image', function() {
+						if(K('#litpic').val()=='')
+						{
+							editor.plugin.imageDialog({
+							imageUrl : K('#litpic').val(),
+							clickFn : function(url, title, width, height, border, align) {
+									K('#litpic').val(url);
+									if(width!='')width = ' width="' + width +'"';
+									if(title!='') title = ' title="' + title +'" alt="'+title+'"';
+									if(height!='') height = ' height="' + height +'"';
+									if(align!='') align = ' align="' + align +'"';
+									if(border!='') border = ' border="' + border +'"';
+									if(url!=''){
+									editor_Content.insertHtml('<img '+title + width + height + align + 'src="'+url+'"/>');
+									K('#flag-p').attr('checked','checked');
+									}
+									else
+									{
+										K('#flag-p').removeAttr('checked');
+									}
+									editor.hideDialog();
+								}
+							});
+						}
+						else
+						{
+							editor.plugin.imageDialog({
+							imageUrl : K('#litpic').val(),
+							clickFn : function(url, title, width, height, border, align) {
+									K('#litpic').val(url);
+									K('#flag-p').attr('checked','checked');
+									editor.hideDialog();
+								}
+							});
+						}
+						
+					});
+				});
+				
+			K('#redirecturl').click(function() {
+				if(K('#redirecturl').val() ==''){url ='http://';}else{url=K('#redirecturl').val();} 
+					$.dialog.prompt('请输入网址', function (val) {
+			K('#flag-j').attr('checked','checked');
+			if(val =='' || val=='http://'){K('#flag-j').removeAttr('checked');K('#redirecturl').val('http://');}else{K('#redirecturl').val(val);}
+}, url);
+
+				});
+			});
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('title','标题不能为空!','')) return false;
+		//if(EmptyCheckForm('writer','作者不能为空!',''))return false;
+		//if(EmptyCheckForm('source','来源不能为空!',''))return false;
+		if(EmptyCheckForm('click','点击数不能为空!',''))return false;
+		if(EmptyCheckForm('typeid','请选择栏目!','0'))return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+	function vote_select(id)
+	{
+		var values = {$choosevote};
+		$.dialog.select(id,'请选择投票项目',function(){},values);
+	}
+	
+/**
+ * 投票ID选择
+ * @param	{String}	提示内容
+ * @param	{Function}	回调函数. 接收参数：输入值
+ * @param	{array}     默认的值和描述
+ */
+artDialog.select = function (id,content,yes,value) {
+	var option ='';
+	for(var key in value)
+	{
+		option += '<option value="'+ key +'" id="art_select_"'+ key +'>'+ value[key] +'</option>';
+	}
+    
+    return artDialog({
+		title:'选择投票项目',
+        id: 'flag',
+        fixed: true,
+        lock: true,
+        opacity: .1,
+        content: [
+            '<div>',
+				'<div style="margin-bottom:5px;margin-top:5px;font-size:12px">',
+                content,
+            '</div>',
+            '<select name="select" id="art_select" style="padding:6px 4px">',
+                    option,
+                '</select>',
+            '</div>',
+            ].join(''),
+        init: function () {
+		
+        },
+        ok: function (here) {
+			$('#'+id).val($('#art_select').val());
+        },
+        cancel: true
+    });
+};
+</script>
+</head>
+<body>
+<table width="100%" class="admintable">
+<tr><td class="admintitle"><span style="float:right"><a href="javascript:;" onclick="history.go(-1)">[返回]</a></span></td></tr>
+</table>
+
+<form action="{:U('Guestbook/doedit')}" onsubmit="return CheckForm();" name="myform" method="post" id="myform" enctype="multipart/form-data">
+
+<div class="nTableft admintable">
+		
+
+	<div id="myTab1_Content0"  style="clear:both;">
+	<table width="100%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF">
+<tr>
+<td width="20%" class="b1_1">联系人</td>
+<td class="b1_1"><input name="name" type="text" id="name" group="basic" size="60" maxlength="50" value="{$guestbook.name}"/></td>
+</tr>
+
+<tr>
+  <td class="b1_1">电话</td>
+  <td class="b1_1">
+	<input name="qq" type="text" id="qq" group="basic" size="60" maxlength="50" value="{$guestbook.qq}"/>
+</td>
+</tr>
+<tr>
+  <td class="b1_1">Email</td>
+  <td class="b1_1">
+      <input name="email" type="text" id="email" group="basic" size="60" maxlength="50" value="{$guestbook.email}"/>
+  </td>
+</tr>
+<tr>
+  <td class="b1_1">留言内容</td>
+  <td class="b1_1">
+    <textarea class='css_textarea' name="content" type="text" id="content" cols="50" rows="5" >{$guestbook.content}</textarea>  
+  </td>
+</tr>
+<tr>
+  <td class="b1_1">回复</td>
+  <td class="b1_1">
+      <textarea class='css_textarea' name="other" type="text" id="other" cols="50" rows="5" >{$guestbook.other}</textarea>
+  </td>
+</tr>
+<tr>
+  <td class="b1_1">是否显示</td>
+  <td class="b1_1">
+    <input name='display' type='radio' class='noborder' value='0' <eq name="guestbook.display" value="0">checked='checked'</eq>/>显示
+    <input name='display' type='radio' class='noborder' value='1' <eq name="guestbook.display" value="1">checked='checked'</eq>/>隐藏  
+  </td>
+</tr>
+
+<td width="20%" class="b1_1"></td>
+<td class="b1_1"><input name="submit" type="submit" class="bnt" value="修 改">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+
+</table>
+	
+</div>	
+
+</div>
+<input type="hidden" name="pubdate" value="{$guestbook.pubdate}"/>
+<input type="hidden" name="id" value="{$guestbook.id}"/>
+<input type="hidden" name="_from" value="<empty name="Think.get.from">{$_SERVER['HTTP_REFERER']}</empty>"/>
+</form>
+
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" />
+</div>
+</body>
+</html>

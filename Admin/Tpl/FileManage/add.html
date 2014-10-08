@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery,Common.codemirror.codemirror"/>
+<import type='css' file="Common.codemirror.codemirror"/>
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<form action="{:U('FileManage/doadd')}"   name="myform" method="post" id="myform" enctype="multipart/form-data">
+<tr> 
+    <td colspan="2" align="left" class="admintitle">文件编辑</td></tr>
+<tr> 
+<td width="20%" class="b1_1">当前文件位置</td>
+<td class="b1_1"><eq name='nowpath' value='.'>根目录<else/>{$nowpath}</eq></td>
+<input type='hidden' name='nowpath' value='{$nowpath}'/>
+<input type='hidden' name='from' value="{$_SERVER['HTTP_REFERER']}"/>
+<input type='hidden' name='type' value="{$Think.get.type}">
+</tr>
+
+<tr> 
+<td width="20%" class="b1_1"><eq name='Think.get.type' value='file'>当前文件名称<else/>当前文件夹名称</eq></td>
+<td class="b1_1"><input type='text' name='filename' size='40'/>
+<eq name='Think.get.type' value='file'>
+<select name='ext'>
+<option value='.htm'>.htm</option>
+<option value='.html'>.html</option>
+<option value='.js'>.js</option>
+<option value='.css'>.css</option>
+<option value='.txt'>.txt</option>
+<option value='.xml'>.xml</option>
+<option value='.php'>.php</option>
+</select>
+</eq>
+</td>
+</tr>
+<eq name='Think.get.type' value='file'>
+<tr>
+  <td valign="top" class="b1_1" colspan="2"><p>快捷键:CTRL+F 查找 CTRL+G 正则替换 F11全屏 ESC取消全屏 选择编辑器风格: <select onchange="selectTheme()" id="select"><option selected>default</option><option>ambiance</option><option>blackboard</option><option>cobalt</option><option>eclipse</option><option>elegant</option><option>erlang-dark</option><option>lesser-dark</option><option>monokai</option><option>neat</option><option>night</option><option>rubyblue</option><option>solarized dark</option><option>solarized light</option><option>twilight</option><option>vibrant-ink</option><option>xq-dark</option></select></p><textarea id="Content" name="content" ></textarea></td>
+</tr>
+</eq>
+<tr>
+<td valign="top" class="b1_1" colspan="2" style="text-align:center;"><input name="submit" type="submit" class="bnt" value="保 存">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>
+ <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("Content"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "application/x-httpd-php",
+        indentUnit: 4,
+        indentWithTabs: true,
+        enterMode: "keep",
+        tabMode: "shift",
+		styleActiveLine: false,
+		lineNumbers: true,
+		lineWrapping: true,
+		indentWithTabs: true,
+		 autoCloseTags: true,
+		highlightSelectionMatches: true,
+		extraKeys: {
+        "F11": function(cm) {
+          setFullScreen(cm, !isFullScreen(cm));
+        },
+        "Esc": function(cm) {
+          if (isFullScreen(cm)) setFullScreen(cm, false);
+        }
+      },
+	  gutters: ["CodeMirror-linenumbers", "breakpoints"]
+      });
+	   var input = document.getElementById("select");
+  function selectTheme() {
+    var theme = input.options[input.selectedIndex].innerHTML;
+    editor.setOption("theme", theme);
+  }
+  var choice = document.location.search &&
+               decodeURIComponent(document.location.search.slice(1));
+  if (choice) {
+    input.value = choice;
+    editor.setOption("theme", choice);
+  }
+  function isFullScreen(cm) {
+      return /\bCodeMirror-fullscreen\b/.test(cm.getWrapperElement().className);
+    }
+    function winHeight() {
+      return window.innerHeight || (document.documentElement || document.body).clientHeight;
+    }
+    function setFullScreen(cm, full) {
+      var wrap = cm.getWrapperElement();
+      if (full) {
+        wrap.className += " CodeMirror-fullscreen";
+        wrap.style.height = winHeight() + "px";
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        wrap.className = wrap.className.replace(" CodeMirror-fullscreen", "");
+        wrap.style.height = "";
+        document.documentElement.style.overflow = "";
+      }
+      cm.refresh();
+    }
+    CodeMirror.on(window, "resize", function() {
+      var showing = document.body.getElementsByClassName("CodeMirror-fullscreen")[0];
+      if (!showing) return;
+      showing.CodeMirror.getWrapperElement().style.height = winHeight() + "px";
+    });
+	function makeMarker() {
+  var marker = document.createElement("div");
+  marker.style.color = "#822";
+  marker.innerHTML = "●";
+  return marker;
+}
+editor.on("gutterClick", function(cm, n) {
+  var info = cm.lineInfo(n);
+  cm.setGutterMarker(n, "breakpoints", info.gutterMarkers ? null : makeMarker());
+});
+
+ </script>

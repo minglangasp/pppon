@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><wk:field name='title'/>-<wk:global name="cfg_webname"/></title>
+<meta name="Keywords" content="<wk:field name='keywords'/>" />
+<meta name="Description" content="<wk:field name='description'/>" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="__THEME__/images/favicon.ico" type="image/x-icon" />
+<link href="__THEME__/images/default.css" rel="stylesheet" type="text/css"/>
+<script src="__THEME__/js/common.js" type="text/javascript"></script>
+<script src="__THEME__/js/marquee.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Admin/js/Jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<wk:include filename="head.htm"/>
+<div id="wrapper">
+
+	<div id="side">
+		<wk:tplvar name='ad-article-300x250'/>
+	     <div class="RightRecommend">
+		      <div class="RRTitle">推荐文章</div>
+		     <div class="RRList">
+			 <ul> 
+			 <wk:arclist flag='c' row='10' modelid='1'>
+			 <li><a href="<field name='arcurl'/>"><field name="title"/></a></li>
+			 </wk:arclist>
+			 </ul>
+			 </div>
+			 </div>
+	
+		
+
+	     <div class="RightHotc">
+		      <div class="RHTitle">热门文章</div>
+		      <div class="RHList">
+			  <ul>
+			   <wk:arclist row='10' modelid='1' orderby='click desc'>
+			 <li><a href="<field name='arcurl'/>"><field name="title"/></a></li>
+			 </wk:arclist>
+			  </ul>
+			  </div>
+         </div>
+	</div>
+
+	<div id="content">
+         <div id="contextbg">
+              <h1><wk:field name="title"/></h1>
+              <div id="newsinfo">作者:<span class="blue"><wk:field name="writer" function="empty(@me) ? '无':@me"/></span> 时间:<span class="blue"><wk:field name="pubdate" function="date('Y-m-d H:i:s',@me)"/></span>&nbsp;&nbsp;浏览:<span class="blue"><wk:field name="click"/></span>
+			  &nbsp;&nbsp;来源:<span class="blue"><wk:field name="source" function="empty(@me)? '无':@me"/></span>
+			  </div>
+              <div id="adcontext1"></div>
+			  <div class="zhaiyao"><b>  核心提示:  </b><wk:field name="description"/></div>
+			  <wk:tplvar name='ad-article-468x60'/>
+              <div id="context"><wk:field name="body"/></div>
+			  <div id="clear"></div>
+			  <div class="badoo">
+				<wk:field name="paging"/>
+			  </div>
+			  <wk:vote />
+			  <div style="margin:5px;text-align:left;">TAG关键词:<wk:field name='tags'/></div>
+              <div class="Toolsbg"><a href="javascript:history.back(-1)">返回</a><a href="#top">跳至顶部</a></div>
+		 </div>
+         <div id="next">上一篇: <wk:field name="prearticle" function="empty(@me) ? '无' :@me"/>&nbsp;&nbsp;下一篇: <wk:field name="nextarticle" function="empty(@me) ? '无' :@me"/></div>
+		<div style="padding:5px;"><wk:plugin name='duoshuo'/></div>
+		 </div>
+
+<wk:include filename="footer.htm"/>
+</body>
+</html>

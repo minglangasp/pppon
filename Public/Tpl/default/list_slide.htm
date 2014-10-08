@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<home>
+<wk:arclist paging='1' pagesize='20' mod="5" getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addonslide` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$slideurl = $row[slideurl];
+	$slideredirecturl = $row[redirecturl];
+	$slidebody = $row[body];
+}
+?>
+<item>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<images><?php echo $slideurl; ?></images>
+<delay>4000</delay>
+<links><?php echo $slideredirecturl; ?></links>
+<imgWidth>600</imgWidth>
+<text><![CDATA[<?php echo $slidebody; ?>]]></text>
+</item>
+</wk:arclist>
+</home>

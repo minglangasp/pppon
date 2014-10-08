@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+KindEditor.ready(function(K) {
+				var editor = K.editor({
+					allowFileManager : true,
+					keepOriginName : true,
+					removeTitle:true
+				});
+				K('#insertfile').click(function() {
+					editor.loadPlugin('insertfile', function() {
+						editor.plugin.fileDialog({
+							fileUrl : K('#filename').val(),
+							clickFn : function(url, title) {
+								K('#filename').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('filename','压缩包路径不能为空!','')) return false;
+		var filename = $('#filename').val();
+		if(filename.toLowerCase().slice(filename.length-4,filename.length)!='.zip')
+		{
+			$.dialog({icon:'warning',content:'压缩包后缀仅支持zip',ok:function(){ $('#filename').focus();}});
+			return false;
+		}
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<form name="myform"  id="myform"  action="{:U('PluginManage/doimport')}" onsubmit="return CheckForm()" method="post">
+<tr> 
+    <td colspan="5" class="admintitle">导入插件</td>
+</tr>
+<tr id="importfile" >
+  <td bgcolor="#f7f7f7">插件压缩包:*.zip</td>
+  <td colspan=4 bgcolor="#f7f7f7" class="td" align="left">
+	<input type="text" name="filename" id="filename" style="width:300px" /> <input type="button" id="insertfile" value="选择文件" />
+  </td>
+</tr>
+<tr>
+  <td bgcolor="#f7f7f7">强制覆盖同目录内容</td>
+  <td colspan=4 bgcolor="#f7f7f7" class="td" align="left">
+	<input type="checkbox" name="checkdir" value="1"/>
+  </td>
+</tr>
+
+<tr> 
+<td width="20%"></td>
+<td colspan=4 class="td" align="left">
+<input type="submit" class="bnt" value="导 入">&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="bnt" onClick="history.go(-1)" value="返 回">  </td>
+</tr>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

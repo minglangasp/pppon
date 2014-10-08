@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin><author>将军</author><description>二维码生成</description><copyright>歪酷CMS</copyright><basic><field tag='input' name='erweima_height' alt='二维码图像高度（单位：px）' value='300' /><field tag='input' name='erweima_width' alt='二维码图像宽度（单位：px）' value='300' /></basic></plugin>

@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>提示信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<base target='_self'/>
+<style>div{line-height:160%;}</style></head>
+<body leftmargin='0' topmargin='0' bgcolor='#FFFFFF'>
+<center>
+<script>
+      var pgo=0;
+      function JumpUrl(){
+        if(pgo==0){ location='{$jumpUrl}'; pgo=1; }
+      }
+document.write("<br /><div style='width:450px;padding:0px;border:1px solid #DADADA;'><div style='padding:6px;font-size:12px;border-bottom:1px solid #DADADA;background:#DBEEBD url(__PUBLIC__/User/img/wbg.gif)';'><b>提示信息！</b></div>");
+document.write("<div style='height:130px;font-size:10pt;background:#ffffff'><br />");
+document.write("{$error}");
+document.write("<br /><a href='{$jumpUrl}'>如果你的浏览器没反应，请点击这里...</a><br/></div>");
+setTimeout('JumpUrl()',{$waitSecond *1000});</script>
+</center>
+</body>
+</html>

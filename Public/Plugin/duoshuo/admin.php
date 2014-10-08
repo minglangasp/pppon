@@ -1,0 +1,1 @@
+<?phpclass duoshuoPlugin extends Plugin{	static function index()	{		$plugin = new Plugin();		return $plugin->display('admin.html');	}}

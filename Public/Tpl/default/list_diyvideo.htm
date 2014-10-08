@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<content>
+<wk:arclist paging='1' pagesize='20' mod="5" getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addondiyvideo` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$url = $row[url];
+	$body = $row[body];
+	$topic = $row[topic];
+	$img = $row[img];
+	$video = $row[video];
+	$width = $row[width];
+	$height = $row[height];
+}
+?>
+<item>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<video><?php echo $video; ?></video>
+<width><?php echo $width; ?></width>
+<height><?php echo $height; ?></height>
+<pic><?php echo $img; ?></pic>
+<topic><![CDATA[<?php echo $topic; ?>]]></topic>
+<desc><![CDATA[<?php echo $body; ?>]]></desc>
+</item>
+</wk:arclist>
+</content>

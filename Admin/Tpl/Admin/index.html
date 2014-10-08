@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file="Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+function jconfirm(str,url)
+{
+   $.dialog.confirm(str,function (){window.location.href=url;});
+}
+</script>
+<style> 
+.classlist {float:left;margin:0;padding:0;}
+.classlist ul {float:left;margin:0;padding:0;}
+.classlist li {margin:0;padding:0;padding:3px 0;border-bottom:1px solid #ffffff;}
+.classlist li span {float:right;margin-top:-3px;}
+.classlist .bigclass {font-weight:bold;clear:both;list-style:none;margin:5px 0;}
+.classlist .yaoclass {font-weight:normal;list-style:none;padding-left:10px;}
+</style>
+<title>网站管理员管理</title>
+</head>
+<body>
+	
+<table border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+  <tr>
+    <td colspan="6" class="admintitle"><span style="float:right;">[<a href="{:U('Admin/add')}">添加</a>]</span>管理员列表 </td>
+  </tr>
+  <tr>
+    <td width="11%" height="25" align="center" bgcolor="#FFFFFF" class="ButtonList">ID</td>
+    <td width="21%" align="center" bgcolor="#FFFFFF" class="ButtonList">管理员名称</td>
+    <td width="28%" align="center" bgcolor="#FFFFFF" class="ButtonList">最后登陆时间</td>
+    <td width="26%" align="center" bgcolor="#FFFFFF" class="ButtonList">最后登陆IP</td>
+    <td width="14%" align="center" bgcolor="#FFFFFF" class="ButtonList">管理选项</td>
+  </tr>
+ <foreach name= "list" item= "vo">
+  <tr>
+    <td height="25" align="center" bgcolor="f7f7f7">{$vo.id}</td>
+    <td align="center" bgcolor="f7f7f7">{$vo.name}</td>
+    <td align="center" bgcolor="f7f7f7">{$vo.logintime|date="Y-m-d H:i:s",###}</td>
+    <td align="center" bgcolor="f7f7f7">{$vo.loginip}</td>
+	<td bgcolor="f7f7f7" style="padding-left:25px;"><a href="{:U('Admin/edit?id=')}{$vo.id}">修改</a>|<a href="javascript:;" onClick="JavaScript:jconfirm('确定要删除？','{:U('Admin/del?id=')}{$vo.id}')">删除</a></td>
+  </tr>
+  </foreach>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

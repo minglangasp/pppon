@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>上传备份文件</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+</head>
+<body>
+ 
+<table border="0"  cellspacing="1" cellpadding="3" height="1" class="admintable1">
+<tr>
+<td class="admintitle">上传备份文件</td>
+</tr><tr>
+<td height="30" bgcolor="#FFFFFF" class="td" align="left"><br/><br/><b>注意：</b>上传的备份文件格式为sql,并且内容必须是歪酷CMS的备份数据!<br/><br/>
+<br/><br/>备份文件命名格式推荐为:	20111210_3774_1.sql;年月日_随机数_卷号.sql
+  <br /><br /><form name="form" action="__URL__/doupload" method="post" enctype="multipart/form-data"><div style='text-align:left;'><input type="file" name="url" size="15"  style="width:250px;" onfocus="javascript:this.className='fbform1';" onblur="javascript:this.className='fbform';">&nbsp;<input type="submit" name="submit" value="上传"></div></form> 
+ <br /><br />
+ <input type="button" onclick="history.go(-1);" class="bnt" value="返 回">
+ <br />
+</td>
+</tr>
+</table>
+  <div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?phpclass sitemapPlugin extends Plugin{	static function index()	{		$plugin = new Plugin();		return $plugin->display();	}		static function link()	{ 		return "<a href='".url('plugin','sitemap')."'>网站地图</a>";	}	}

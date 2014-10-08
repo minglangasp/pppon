@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+function jconfirm(str,url)
+{
+   $.dialog.confirm(str,function (){window.location.href=url;});
+}
+{$js}
+function switchjs(path,bpath)
+{
+	var imgpath ='__PUBLIC__/Admin/images/'; 
+	var a = $('#'+bpath+' > td > span > img').attr('id');
+	if(a=='+')
+	{
+		$('#'+bpath+' > td > span > img').attr('id','-');
+		$('#'+bpath+' > td > span > img').attr('src',imgpath+'jian.gif');
+		$("tr[path="+path+"]").show();
+	}
+	else
+	{
+		$('#'+bpath+' > td > span > img').attr('id','+');
+		$('#'+bpath+' > td > span > img').attr('src',imgpath+'jia.gif');
+		$("tr[path="+path+"]").hide();
+	}
+}
+function doextendtree(i)
+{
+	var imgpath ='__PUBLIC__/Admin/images/'; 
+	if(i==1)
+	{
+		$('#extendtreeopen').hide();
+		$('#extendtreeclose').show();
+		$("tr[datatype='volist']").show();
+		$('.jiapic').attr('src',imgpath+'jian.gif');
+	}
+	if(i==2)
+	{
+		$('#extendtreeclose').hide();
+		$('#extendtreeopen').show();
+		$("tr[datatype='volist']").hide();
+		$('.jiapic').attr('src',imgpath+'jia.gif');
+		extendtree();
+	}
+}
+</script>
+<style>
+.typelist{float:left;}
+</style>
+</head>
+<body>
+<form name='myform' id='myform' action="{:U('Type/delall')}" method='post'>
+<table border="0" cellspacing="2" cellpadding="3"  align="center" class="admintable">
+<tr> 
+  <td colspan="3" align="left" class="admintitle"><span style="float:right;">[<a href="{:U('Type/add')}">添加</a>]</span>栏目列表</td>
+</tr>
+  <tr align="center"> 
+	<td width="5%" height="24" class="ButtonList">排 序</td>
+    <td width="70%" class="ButtonList">栏目名称</td>
+    <td width="25%" class="ButtonList">操 作</td>
+  </tr>
+ <volist name= "list" id="vo"> 
+	<input type='hidden' name="id[]" value='{$vo.id}' style="display:none;"/>
+    <tr bgcolor="#f9f9f9" datatype='volist'  onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''" class='none' id="{$vo.bpath}" path='{$vo.path}'>
+    <td width="5%"><input type='text' name='sortrank[]' value='{$vo.sortrank}' style='width:30px;'/></td>
+	<td height="24" class="tdleft" onclick="switchjs('{$vo.bpath}','{$vo.bpath}')" ><span class="typelist" style="cursor:pointer;"><php>
+for($i=0;$i<$vo['count'];$i++){
+if($vo['count']>2)
+{
+	echo '&nbsp;';
+}
+}
+if($vo['fid']<>0){
+echo "└&nbsp;";
+}
+</php><img src="__PUBLIC__/Admin/images/jia.gif" id='+' class='jiapic'/>&nbsp;{$vo.typename}[ID:{$vo.id}](文档:{$vo.id|archive_gettotal=###,'arctype'})</span></td>
+    
+    <td width="25%" align="center"><a href="{$vo.id|url='list',###}" target='_blank'>预览</a>|<a href="{:U('Archive/index?typeid=')}{$vo.id}">内容</a>|<a href='{:U('Type/add?id=')}{$vo.id}'>增加子类</a>|<a href="{:U('Type/edit?id=')}{$vo.id}">编辑</a> | <a href="javascript:;" onClick="JavaScript:return jconfirm('删除的栏目必须无子栏目,且无文章！确定？','{:U('Type/del?id=')}{$vo.id}')">删除</a></td>
+	
+  </tr>
+ </volist>
+<tr bgcolor="#f1f3f5">
+	 <td colspan="3" bgcolor="f7f7f7" align="left">
+	 <input type="button" class="bnt" value="展开所有" id='extendtreeopen' onclick="doextendtree(1);"/>
+	 <input type="button" class="bnt none" value="合并所有" id='extendtreeclose' onclick="doextendtree(2);"/>&nbsp;&nbsp;
+	 <input type="submit" class="bnt" value="更新排序"/>&nbsp;&nbsp;
+	 </td>
+</tr> 
+</table>
+</form>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" />  
+</div>
+</body>
+</html>

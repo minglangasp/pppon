@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="./Public/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="./Public/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="./Public/Editor/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="./Public/Editor/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="./Public/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="./Public/Common/artDialog/extend.js"></script>
+<link href="./Public/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<script>
+function jconfirm(str,url)
+{
+   $.dialog.confirm(str,function (){window.location.href=url;});
+}
+</script>
+<title>主题属性编辑</title>
+</head>
+<body>
+<table width="100%" class="admintable">
+<tr><td class="admintitle"><span style="float:right;cursor:pointer;" onclick="history.go(-1);">[返回]</span>主题属性扩展</td></tr>
+</table>
+<div class="nTableft admintable">
+	<div class="TabTitleleft">
+      		<ul id="myTab1">
+					<li class="active" onClick="nTabs(this,0);" style="width:{$_i+97/3}%">常规属性</li>
+					<li class="normal" onClick="nTabs(this,1);" style="width:{$_i+97/3}%">高级属性</li>
+					<li class="normal" onClick="nTabs(this,2);" style="width:{$_i+97/3}%">扩展属性</li>
+      		</ul>
+    	</div>
+		<div style="clear:both;background:#EEFCDD;">
+		<table width="100%" style="margin:5px 0;border:0;text-align:center;">
+  <tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+    <td width="30%" align="center">参数说明</td>
+    <td width="50%" align="center">参数值</td>
+    <td width="20%" align="center">标签调用</td>
+  </tr>
+</table>
+</div>
+	<form name='myform' id='myform' method='post' action="{:U('Tpl/doedit?name=')}{$Think.get.name}">
+<div id="myTab1_Content0"  style="clear:both;">
+<table width="100%" border="0"  align="center" cellpadding="3" cellspacing="1" style="margin:5px 0;background:#FFF">
+<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+<td width="30%" align="left">主题目录名称<div id='themedirname' style="color:#ccc;letter-spacing: 0px;font-size:12px;"></div></td>
+	<td width="50%" align="left">{$Think.get.name}<input type='hidden' name="themedirname" value="{$Think.get.name}" readonly/></td>
+	<td width="20%" align="left">{:htmlspecialchars("<wk:tplvar name='themedirname'/>")}</td>
+	</tr>
+	<present name='field.basic'>
+	<volist name='field.basic' id='vo'>
+	<eq name='vo.tag' value='html'>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''"><td colspan='3'>{$vo.data}</td></tr>
+	<else/>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+<td width="30%" align="left">{$vo.alt}<div id='h{$vo.name}' style="color:#ccc;letter-spacing: 0px;font-size:12px;"></div></td>
+	<td width="50%" align="left">
+	<eq name='vo.tag' value='input'>
+	{$vo.before}<input name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" value="{$vo.value}" {$vo.extend}/>{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='textarea'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" type="text" id="o{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" cols="50" rows="5" {$vo.extend}>{$vo.value}</textarea>{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='select'>
+	{$vo.before}<select class='css_select' name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';">
+	{$vo.select}{$vo.after}
+	</select>
+	</eq>
+	<eq name='vo.tag' value='radio'>
+	{$vo.before}{$vo.select}{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='editor'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" id="editor_{$vo.uniqid}"   style='width:100%;'>{$vo.value}</textarea>{$vo.after}{$vo.select}
+	</eq>
+	<present name='vo.editor'>{$vo.editor}</present>
+	</td>
+	<td width="20%" align="left">{:htmlspecialchars("<wk:tplvar name='".$vo['name']."'/>")}</td>
+</tr>
+	</eq>
+	</volist>
+	</present>
+	<tr class="css_page_list">
+			<td height="30" colspan="2" align="center">
+		  <input type='submit' class="bnt" value=' 保存 '></td>
+		</tr>
+</table>
+</div>
+<div id="myTab1_Content1"  style="clear:both;" class='none'>
+<table width="100%" border="0"  align="center" cellpadding="3" cellspacing="1" style="margin:5px 0;background:#FFF">
+	<present name='field.advance'>
+	<volist name='field.advance' id='vo'>
+	<eq name='vo.tag' value='html'>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''"><td colspan='3'>{$vo.data}</td></tr>
+	<else/>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+<td width="30%" align="left">{$vo.alt}<div id='h{$vo.name}' style="color:#ccc;letter-spacing: 0px;font-size:12px;"></div></td>
+	<td width="50%" align="left">
+	<eq name='vo.tag' value='input'>
+	{$vo.before}<input name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" value="{$vo.value}" {$vo.extend}/>{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='textarea'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" type="text" id="o{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" cols="50" rows="5" {$vo.extend}>{$vo.value}</textarea>{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='select'>
+	{$vo.before}<select class='css_select' name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';">
+	{$vo.select}{$vo.after}
+	</select>
+	</eq>
+	<eq name='vo.tag' value='radio'>
+	{$vo.before}{$vo.select}{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='editor'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" id="editor_{$vo.uniqid}"  style='width:100%;'>{$vo.value}</textarea>{$vo.after}{$vo.select}
+	</eq>
+	<present name='vo.editor'>{$vo.editor}</present>
+	</td>
+	<td width="20%" align="left">{:htmlspecialchars("<wk:tplvar name='".$vo['name']."'/>")}</td>
+</tr>
+	</eq>
+	</volist>
+	</present>
+	<tr class="css_page_list">
+			<td height="30" colspan="2" align="center">
+		  <input type='submit' class="bnt" value=' 保存 '></td>
+		</tr>
+</table>
+</div>
+<div id="myTab1_Content2"  style="clear:both;" class='none'>
+<table width="100%" border="0"  align="center" cellpadding="3" cellspacing="1" style="margin:5px 0;background:#FFF">
+	<present name='field.extend'>
+	<volist name='field.extend' id='vo'>
+	<eq name='vo.tag' value='html'>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''"><td colspan='3'>{$vo.data}</td></tr>
+	<else/>
+	<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+<td width="30%" align="left">{$vo.alt}<div id='h{$vo.name}' style="color:#ccc;letter-spacing: 0px;font-size:12px;"></div></td>
+	<td width="50%" align="left">
+	<eq name='vo.tag' value='input'>
+	{$vo.before}<input name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" value="{$vo.value}" {$vo.extend}/>
+	{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='textarea'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" type="text" id="o{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';" cols="50" rows="5" {$vo.extend}>{$vo.value}</textarea>{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='select'>
+	{$vo.before}<select class='css_select' name="{$vo.name}" onFocus="h{$vo.name}.style.color='blue';" onBlur="h{$vo.name}.style.color='#ccc';">
+	{$vo.select}{$vo.after}
+	</select>
+	</eq>
+	<eq name='vo.tag' value='radio'>
+	{$vo.before}{$vo.select}{$vo.after}
+	</eq>
+	<eq name='vo.tag' value='editor'>
+	{$vo.before}<textarea class='css_textarea' name="{$vo.name}" id="editor_{$vo.uniqid}" style='width:100%;'>{$vo.value}</textarea>{$vo.after}{$vo.select}
+	</eq>
+	<present name='vo.editor'>{$vo.editor}</present>
+	</td>
+	<td width="20%" align="left">{:htmlspecialchars("<wk:tplvar name='".$vo['name']."'/>")}</td>
+</tr>
+</eq>
+	</volist>
+	</present>
+	<tr class="css_page_list">
+			<td height="30" colspan="2" align="center">
+		  <input type='submit' class="bnt" value=' 保存 '></td>
+		</tr>
+</table>
+</div>
+</form>
+</div>
+
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

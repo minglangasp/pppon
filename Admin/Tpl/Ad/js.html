@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+</head>
+<body>
+<table width="100%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+  <td colspan="5" class="admintitle"><span style="float:right"><a href="javascript:;" onclick="history.go(-1);">[返回]</a></span>JS调用</td></tr>
+  <tr>
+<td width="20%" class="b1_1">广告ID</td>
+<td colspan='4' class="b1_1">{$list.id}</td>
+</tr>
+<tr>
+<td width="20%" class="b1_1">广告名称</td>
+<td colspan='4' class="b1_1">{$list.title}</td>
+</tr>
+<tr> 
+<td width="20%" class="b1_1">调用标签代码</td>
+<td colspan='4' class="b1_1"><textarea name="tag" cols="50" rows="8" >{$tagcode}</textarea></td>
+</tr>
+<tr> 
+<td width="20%" class="b1_1">调用JS代码</td>
+<td colspan='4' class="b1_1"><textarea name="content" cols="50" rows="8" >{$jscode}</textarea></td>
+</tr>
+
+<tr>
+  <td class="b1_1">调用演示</td>
+  <td colspan='4' class="b1_1">{$jscode}</td>
+</tr>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

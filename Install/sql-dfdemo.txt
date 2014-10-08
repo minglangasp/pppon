@@ -1,0 +1,121 @@
+INSERT INTO `#@__addondiybg` (`id`, `typeid`, `redirecturl`, `url`, `img`) VALUES
+(57, 15, '', '/demo01/Public/Uploads/file/20140810/87f349c5.swf', '/demo01/Public/Uploads/image/20140810/7324e1af.jpg'),
+(58, 15, '', '/demo01/Public/Uploads/file/20140810/9d57df19.swf', '/demo01/Public/Uploads/image/20140810/71a02d3a.jpg'),
+(59, 15, '', '/demo01/Public/Uploads/file/20140810/d71fa42c.swf', '/demo01/Public/Uploads/image/20140810/2b651720.jpg');
+
+INSERT INTO `#@__addondiyinfo` (`id`, `typeid`, `redirecturl`, `topic`, `body`, `simg`, `url`, `open`, `img`, `ywidth`, `yheight`) VALUES
+(63, 19, '', '信息简介', '信息内容', '/demo01/Public/Uploads/image/20140811/cde66a72.jpg', '', '1', '/demo01/Public/Uploads/image/20140811/ad685e37.jpg', '', ''),
+(65, 19, '', '信息简介信息简介信息简介信息简介2', '信息内容信息内容信息内容2', '/demo01/Public/Uploads/image/20140813/cde66a72.jpg', '', '1', '/demo01/Public/Uploads/image/20140813/ad685e37.jpg', '590', '330'),
+(72, 19, '', '水电费水电费', '水电费问任务而为人45 3453&nbsp;', '/demo01/Public/Uploads/image/20140818/cde66a72.jpg', '', '1', '/demo01/Public/Uploads/image/20140818/ad685e37.jpg', '', ''),
+(73, 36, '', '', '阿里巴巴集团主要创始人之一、阿里巴巴集团主席和首席执行官、阿里巴巴公司主席和非执行董事、软银集团董事、中国雅虎董事局主席、亚太经济合作组织（APEC）下工商咨询委员会(ABAC)会员。<br />\r\n<a target="_blank" href="http://www.taobao.com">http://www.taobao.com</a>', '', 'http://www.qq.com', '', '/demo01/Public/Uploads/image/20140819/b9916d8c.jpg', '', ''),
+(74, 36, '', '', '2005年8月，百度<font color="#E53333"><b>在美国纳斯达克</b></font>成功上市，成<font style="background-color:#E53333;">为全球资本市场最</font>受关注的上市公司之一。在李彦宏领导下，百度不仅拥有全球最优秀的搜索引擎技术团队，同时<font face="Microsoft YaHei" size="24">也拥有国内最</font>优秀的管理团队、产品设计、开发和维<font size="5">护团队；在商业</font>模式方面，也同样具有开创性。<br />\r\n<a target="_blank" href="http://www.baidu.com">http://www.baidu.com</a>', '', 'http://www.baidu.com', '', '/demo01/Public/Uploads/image/20140819/70768418.jpg', '', ''),
+(75, 37, '', '', '微软全球渠道主管Allison Watson', '', '', '', '/demo01/Public/Uploads/image/20140819/42d33027.jpg', '', ''),
+(76, 37, '', '', '赛门铁克CEO约翰·汤普森', '', '', '', '/demo01/Public/Uploads/image/20140819/4367155f.jpg', '', '');
+
+INSERT INTO `#@__addondiyintro` (`id`, `typeid`, `redirecturl`, `body`, `pic`) VALUES
+(64, 20, '', '简介内容', '/demo01/Public/Uploads/image/20140811/6d26bada.jpg'),
+(77, 39, '', '文本展示啊', '/demo01/Public/Uploads/image/20140811/6d26bada.jpg');
+
+INSERT INTO `#@__addondiymusic` (`id`, `typeid`, `redirecturl`, `url`, `pic`, `link`) VALUES
+(60, 16, '', 'http://120.198.238.86/rm.sina.com.cn/wm/VZ200911231412336707VK/music/MUSIC0912012038567601.mp3', '/demo01/Public/Uploads/image/20140810/fbbd3ba1.jpg', '');
+
+INSERT INTO `#@__addondiyphoto` (`id`, `typeid`, `redirecturl`, `body`, `pic`, `url`, `spic`) VALUES
+(62, 18, '', '四点多风格的双方各', '/demo01/Public/Uploads/image/20140811/772c0db9.jpg', '', '/demo01/Public/Uploads/image/20140811/9b09b3a2.jpg'),
+(66, 18, '', '图片内容阿斯顿发生地方', '/demo01/Public/Uploads/image/20140816/52145360.jpg', '', '/demo01/Public/Uploads/image/20140816/81b12ce9.jpg'),
+(67, 27, '', 'uhnsha摄影包体1111', '/demo01/Public/Uploads/image/20140816/df724086.jpg', '', '/demo01/Public/Uploads/image/20140816/3679a5a8.jpg'),
+(68, 27, '', '婚纱摄影2婚纱摄影2婚纱摄影2', '/demo01/Public/Uploads/image/20140816/e0577433.jpg', '', '/demo01/Public/Uploads/image/20140816/403f4c4e.jpg'),
+(69, 28, '', '风景摄影1风景摄影1风景摄影1', '/demo01/Public/Uploads/image/20140816/772c0db9.jpg', '', '/demo01/Public/Uploads/image/20140816/9b09b3a2.jpg'),
+(70, 28, '', '风景摄影2风景摄影2风景摄影2', '/demo01/Public/Uploads/image/20140816/df724086.jpg', '', '/demo01/Public/Uploads/image/20140816/3679a5a8.jpg');
+
+INSERT INTO `#@__addondiyvideo` (`id`, `typeid`, `redirecturl`, `img`, `width`, `height`, `video`, `topic`, `body`, `url`) VALUES
+(61, 32, '', '/demo01/Public/Uploads/image/20140816/9b09b3a2.jpg', '540', '360', '/demo01/Public/Uploads/file/20140811/d76e33e9.flv', '斯蒂芬斯蒂芬斯蒂芬', '水水水水水水水水水水水水', ''),
+(71, 17, '', '/demo01/Public/Uploads/image/20140816/c7d77080.jpg', '720', '480', '/demo01/Public/Uploads/file/20140811/d76e33e9.flv', '视频描述', '视频内容', '');
+
+INSERT INTO `#@__addonslide` (`id`, `typeid`, `redirecturl`, `body`, `slideurl`) VALUES
+(54, 13, '', '幻灯描述啊发生的发生法斯蒂芬', '/demo01/Public/Uploads/image/20140810/8fdae90f.jpg'),
+(55, 13, '', '换的呢过面桑德菲杰', '/demo01/Public/Uploads/image/20140810/c4927a79.jpg'),
+(56, 13, '', '幻灯描述', '/demo01/Public/Uploads/image/20140810/c6795902.jpg');
+
+INSERT INTO `#@__archive` (`id`, `typeid`, `flag`, `modelid`, `arcrank`, `click`, `money`, `title`, `shorttitle`, `color`, `writer`, `source`, `litpic`, `pubdate`, `senddate`, `mid`, `keywords`, `description`, `voteid`) VALUES
+(66, 18, '', 9, 1, 197, 20, '图片标题2', '', '', '不详', '网络', '', 1408203528, 1408203528, 1, '', '图片内容阿斯顿发生地方...', 0),
+(67, 27, '', 9, 1, 143, 20, '婚纱摄影标题1', '', '', '不详', '网络', '', 1408203661, 1408203661, 1, '', 'uhnsha摄影包体1111...', 0),
+(68, 27, '', 9, 1, 107, 20, '婚纱摄影2', '', '', '不详', '网络', '', 1408203783, 1408203783, 1, '', '婚纱摄影2婚纱摄影2婚纱摄影2...', 0),
+(69, 28, '', 9, 1, 147, 20, '风景摄影1', '', '', '不详', '网络', '', 1408203974, 1408203974, 1, '', '风景摄影1风景摄影1风景摄影1...', 0),
+(70, 28, '', 9, 1, 192, 20, '风景摄影2', '', '', '不详', '网络', '', 1408204016, 1408204016, 1, '', '风景摄影2风景摄影2风景摄影2...', 0),
+(71, 17, '', 8, 1, 83, 20, '视频', '', '', '不详', '网络', '', 1408278300, 1408278300, 1, '', '视频内容...', 0),
+(72, 19, '', 10, 1, 188, 20, '信息3', '', '', '不详', '网络', '', 1408370309, 1408370309, 1, '', '水电费问任务而为人45 3453&nbsp;...', 0),
+(73, 36, '', 10, 1, 81, 20, '马云', '', '', '不详', '网络', '', 1408464303, 1408464303, 1, '', '阿里巴巴集团主要创始人之一、阿里巴巴集团主席和首席执行官、阿里巴巴公司主席和非执行董事、软银集团董事、中国雅虎董事局主席、亚太经济合作组织（APEC）下工商咨询委员会(ABAC)会员。\r\nhttp://www.taobao.com...', 0),
+(74, 36, '', 10, 1, 80, 20, '李彦宏', '', '', '不详', '网络', '', 1408464457, 1408464457, 1, '', '2005年8月，百度在美国纳斯达克成功上市，成为全球资本市场最受关注的上市公司之一。在李彦宏领导下，百度不仅拥有全球最优秀的搜索引擎技术团队，同时也拥有国内最优秀的管理团队、产品设计、开发和维护团队；在商业模式方面，也同样具有开创性，对中国企业分享互联网成果起到了积极推动作用。\r\nhttp://www.baidu.com...', 0),
+(75, 37, '', 10, 1, 192, 20, '微软全球渠道主管Allison Watson', '', '', '不详', '网络', '', 1408464523, 1408464523, 1, '', '微软全球渠道主管Allison Watson...', 0),
+(76, 37, '', 10, 1, 69, 20, '赛门铁克CEO约翰·汤普森', '', '', '不详', '网络', '', 1408464576, 1408464576, 1, '', '赛门铁克CEO约翰·汤普森...', 0),
+(77, 39, '', 11, 1, 72, 20, '文本展示a', '', '', '不详', '网络', '', 1408467397, 1408467397, 1, '', '文本展示啊...', 0),
+(56, 13, '', 5, 1, 105, 20, '幻灯测试3', '', '', '不详', '网络', '', 1390119188, 1390119188, 1, '', '幻灯描述...', 0),
+(57, 15, '', 6, 1, 98, 20, '背景1', '', '', '不详', '网络', '', 1407678777, 1407678777, 1, '', '...', 0),
+(58, 15, '', 6, 1, 170, 20, '背景2', '', '', '不详', '网络', '', 1407682653, 1407682653, 1, '', '...', 0),
+(59, 15, '', 6, 1, 185, 20, '背景3', '', '', '不详', '网络', '', 1409468602, 1407682695, 1, '', '...', 0),
+(60, 16, '', 7, 1, 170, 20, '音乐1', '', '', '不详', '网络', '', 1407682829, 1407682829, 1, '', '...', 0),
+(61, 32, '', 8, 1, 159, 20, '视频合辑1视频1', '', '', '不详', '网络', '', 1407770727, 1407770727, 1, '', '水水水水水水水水水水水水...', 0),
+(62, 18, '', 9, 1, 67, 20, '图片1', '', '', '不详', '网络', '', 1407771080, 1407771080, 1, '', '四点多风格的双方各...', 0),
+(63, 19, '', 10, 1, 176, 20, '信息1', '', '', '不详', '网络', '', 1407771582, 1407771582, 1, '', '信息内容...', 0),
+(64, 20, '', 11, 1, 88, 20, '简介1', '', '', '不详', '网络', '', 1407771675, 1407771675, 1, '', '简介内容...', 0),
+(65, 19, '', 10, 1, 67, 20, '信息2', '', '', '不详', '网络', '', 1407944150, 1407944150, 1, '', '信息内容信息内容信息内容2...', 0),
+(54, 13, '', 5, 1, 76, 20, '幻灯标题测试1', '', '', '不详', '网络', '', 1390119128, 1390119128, 1, '', '幻灯描述啊发生的发生法斯蒂芬...', 0),
+(55, 13, '', 5, 1, 128, 20, '幻灯测试2', '', '', '不详', '网络', '', 1390119166, 1390119166, 1, '', '换的呢过面桑德菲杰...', 0);
+
+INSERT INTO `#@__guestbook` (`id`, `name`, `qq`, `email`, `content`, `pubdate`, `display`, `other`) VALUES
+(21, 'sdfsdf', 'sfd', 'sdf', 'dfgdfg', 0, 0, 'dfg'),
+(22, 'dfgerte', 'erter', 'tdfgd', 'fgdf', 0, 0, 'dfg');
+
+INSERT INTO `#@__arctiny` (`id`, `typeid`, `modelid`, `senddate`, `mid`) VALUES
+(66, 18, 9, 1408203528, 1),
+(67, 27, 9, 1408203661, 1),
+(68, 27, 9, 1408203783, 1),
+(69, 28, 9, 1408203974, 1),
+(70, 28, 9, 1408204016, 1),
+(71, 17, 8, 1408278300, 1),
+(72, 19, 10, 1408370309, 1),
+(73, 36, 10, 1408464303, 1),
+(74, 36, 10, 1408464457, 1),
+(75, 37, 10, 1408464523, 1),
+(76, 37, 10, 1408464576, 1),
+(77, 39, 11, 1408467397, 1),
+(55, 13, 5, 1390119166, 1),
+(56, 13, 5, 1390119188, 1),
+(57, 15, 6, 1407678777, 1),
+(58, 15, 6, 1407682653, 1),
+(59, 15, 6, 1407682695, 1),
+(60, 16, 7, 1407682829, 1),
+(61, 32, 8, 1407770727, 1),
+(62, 18, 9, 1407771080, 1),
+(54, 13, 5, 1390119128, 1),
+(63, 19, 10, 1407771582, 1),
+(64, 20, 11, 1407771675, 1),
+(65, 19, 10, 1407944150, 1);
+
+
+INSERT INTO `#@__arctype` (`id`, `modelid`, `modeltype`, `linkurl`, `typename`, `seotitle`, `keywords`, `description`, `content`, `sortrank`, `fid`, `path`, `tempindex`, `templist`, `temparticle`, `waptempindex`, `waptemplist`, `waptemparticle`, `display`, `litpic`) VALUES
+(15, 6, 0, '', '背景', '', '', '', '', 50, 0, '0', '{style}/index_diybg.htm', '{style}/list_diybg.htm', '{style}/article_diybg.htm', '{wapstyle}/index_diybg.htm', '{wapstyle}/list_diybg.htm', '{wapstyle}/article_diybg.htm', 1, ''),
+(13, 5, 0, '', '首页幻灯', 'slide', '_a', '', '', 1, 0, '0', '{style}/index_slide.htm', '{style}/list_slide.htm', '{style}/article_slide.htm', '{wapstyle}/index_slide.htm', '{wapstyle}/list_slide.htm', '{wapstyle}/article_slide.htm', 0, ''),
+(16, 7, 0, '', '背景音乐', '', '', '', '', 50, 0, '0', '{style}/index_diymusic.htm', '{style}/list_diymusic.htm', '{style}/article_diymusic.htm', '{wapstyle}/index_diymusic.htm', '{wapstyle}/list_diymusic.htm', '{wapstyle}/article_diymusic.htm', 1, ''),
+(17, 8, 0, '', '视频演示', 'player', '_a', '', '', 6, 0, '0', '{style}/index_diyvideo.htm', '{style}/videomain.htm', '{style}/article_diyvideo.htm', '{wapstyle}/index_diyvideo.htm', '{wapstyle}/list_diyvideo.htm', '{wapstyle}/article_diyvideo.htm', 0, ''),
+(18, 9, 0, '', '最新图片', 'photo', '_c', '', '', 4, 0, '0', '{style}/index_diyphoto.htm', '{style}/list_diyphoto.htm', '{style}/article_diyphoto.htm', '{wapstyle}/index_diyphoto.htm', '{wapstyle}/list_diyphoto.htm', '{wapstyle}/article_diyphoto.htm', 0, ''),
+(19, 10, 0, '', '信息演示', 'news', '_a', '', '', 3, 0, '0', '{style}/index_diyinfo.htm', '{style}/list_diyinfo.htm', '{style}/article_diyinfo.htm', '{wapstyle}/index_diyinfo.htm', '{wapstyle}/list_diyinfo.htm', '{wapstyle}/article_diyinfo.htm', 0, ''),
+(20, 11, 0, '', '简介演示', 'text', '_c', '', '', 2, 0, '0', '{style}/index_diyintro.htm', '{style}/list_diyintro.htm', '{style}/article_diyintro.htm', '{wapstyle}/index_diyintro.htm', '{wapstyle}/list_diyintro.htm', '{wapstyle}/article_diyintro.htm', 4, ''),
+(26, 9, 0, '', '相册展示', 'photo', '_a', '', '', 5, 0, '0', '{style}/index_diyphoto.htm', '{style}/photolist.htm', '{style}/article_diyphoto.htm', '{wapstyle}/index_diyphoto.htm', '{wapstyle}/list_diyphoto.htm', '{wapstyle}/article_diyphoto.htm', 0, ''),
+(25, 2, 0, '', 'contant', 'contact', '', '', '联系我们的内容', 10, 0, '0', '{style}/index_download.htm', '{style}/list_download.htm', '{style}/article_download.htm', '{wapstyle}/index_download.htm', '{wapstyle}/list_download.htm', '{wapstyle}/article_download.htm', 0, ''),
+(27, 9, 0, '', '婚纱摄影', 'photo', '_b', 'sdfsdfsdf', '', 50, 26, '0-26', '{style}/index_diyphoto.htm', '{style}/list_diyphoto.htm', '{style}/article_diyphoto.htm', '{wapstyle}/index_diyphoto.htm', '{wapstyle}/list_diyphoto.htm', '{wapstyle}/article_diyphoto.htm', 0, '/demo01/Public/Uploads/image/20140816/e0697a3b.jpg'),
+(28, 9, 0, '', '风景摄影', 'photo', '_a', '分类2的简介', '', 50, 26, '0-26', '{style}/index_diyphoto.htm', '{style}/list_diyphoto.htm', '{style}/article_diyphoto.htm', '{wapstyle}/index_diyphoto.htm', '{wapstyle}/list_diyphoto.htm', '{wapstyle}/article_diyphoto.htm', 0, '/demo01/Public/Uploads/image/20140816/c7d77080.jpg'),
+(31, 8, 0, '', '视频合辑', 'player', '_b', '', '', 7, 0, '0', '{style}/index_diyvideo.htm', '{style}/videolist.htm', '{style}/article_diyvideo.htm', '{wapstyle}/index_diyvideo.htm', '{wapstyle}/list_diyvideo.htm', '{wapstyle}/article_diyvideo.htm', 0, ''),
+(32, 8, 0, '', '视频合辑1', '', '', '', '', 50, 31, '0-31', '{style}/index_diyvideo.htm', '{style}/list_diyvideo.htm', '{style}/article_diyvideo.htm', '{wapstyle}/index_diyvideo.htm', '{wapstyle}/list_diyvideo.htm', '{wapstyle}/article_diyvideo.htm', 1, ''),
+(33, 8, 0, '', '视频合辑2', '', '', '', '', 50, 31, '0-31', '{style}/index_diyvideo.htm', '{style}/list_diyvideo.htm', '{style}/article_diyvideo.htm', '{wapstyle}/index_diyvideo.htm', '{wapstyle}/list_diyvideo.htm', '{wapstyle}/article_diyvideo.htm', 1, ''),
+(35, 10, 0, '', '团队介绍', 'news', '_b', '', '', 8, 0, '0', '{style}/index_diyinfo.htm', '{style}/list_team.htm', '{style}/article_diyinfo.htm', '{wapstyle}/index_diyinfo.htm', '{wapstyle}/list_diyinfo.htm', '{wapstyle}/article_diyinfo.htm', 0, ''),
+(36, 10, 0, '', '国内IT', '', '', '', '', 50, 35, '0-35', '{style}/index_diyinfo.htm', '{style}/list_diyinfo.htm', '{style}/article_diyinfo.htm', '{wapstyle}/index_diyinfo.htm', '{wapstyle}/list_diyinfo.htm', '{wapstyle}/article_diyinfo.htm', 1, ''),
+(37, 10, 0, '', '国外IT', '', '', '', '', 50, 35, '0-35', '{style}/index_diyinfo.htm', '{style}/list_diyinfo.htm', '{style}/article_diyinfo.htm', '{wapstyle}/index_diyinfo.htm', '{wapstyle}/list_diyinfo.htm', '{wapstyle}/article_diyinfo.htm', 1, ''),
+(38, 1, 2, 'http://www.qq.com', '友情链接', '', '', '', '', 11, 0, '0', '{style}/index_article.htm', '{style}/list_article.htm', '{style}/article_article.htm', '{wapstyle}/index_article.htm', '{wapstyle}/list_article.htm', '{wapstyle}/article_article.htm', 0, ''),
+(39, 11, 0, '', '文本1', 'text', '_a', '', '', 50, 20, '0-20', '{style}/index_diyintro.htm', '{style}/list_diyintro.htm', '{style}/article_diyintro.htm', '{wapstyle}/index_diyintro.htm', '{wapstyle}/list_diyintro.htm', '{wapstyle}/article_diyintro.htm', 0, ''),
+(40, 11, 0, '', '文本2', 'text', '_b', '', '', 50, 20, '0-20', '{style}/index_diyintro.htm', '{style}/list_diyintro.htm', '{style}/article_diyintro.htm', '{wapstyle}/index_diyintro.htm', '{wapstyle}/list_diyintro.htm', '{wapstyle}/article_diyintro.htm', 0, ''),
+(41, 11, 0, '', '文本3', 'text', '_c', '', '', 50, 20, '0-20', '{style}/index_diyintro.htm', '{style}/list_diyintro.htm', '{style}/article_diyintro.htm', '{wapstyle}/index_diyintro.htm', '{wapstyle}/list_diyintro.htm', '{wapstyle}/article_diyintro.htm', 0, '');
+
+INSERT INTO `#@__vote` (`id`, `title`, `content`, `status`, `type`, `starttime`, `overtime`, `rank`) VALUES
+(1, '测试投票', '投票选项1=5\n投票选项2=5\n投票选项1=3\n投票选项2=4\n投票选项1=3\n投票选项2=4', 1, 1, 1358251426, 1359806677, 0),
+(2, '测试投票2', '投票选项1=5\n投票选项2=5\n投票选项1=3\n投票选项2=4\n投票选项1=3\n投票选项2=4', 1, 0, 1358251426, 1359806677, 0);

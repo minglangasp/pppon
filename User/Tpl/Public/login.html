@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{$GLOBALS['cfg_webname']}-用户登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="会员中心">
+    <meta name="author" content="歪酷CMS">
+    <link href="__PUBLIC__/User/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="__PUBLIC__/User/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <include file="Public:head"/>
+    <div class="container-fluid">
+      <div class="row-fluid">
+       <include file="Public:left"/>
+		<div class="span9">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand">会员登陆</a>
+				</div>
+			</div>
+		</div>
+        <div class="span9" style='border:1px solid #ccc;margin-bottom:10px;'>
+		<div style="padding:20px">
+		<form class="form-horizontal" action="{:U('Public/dologin')}" method="post" onsubmit="return CheckForm()" >
+		<div class="control-group">
+			<label class="control-label">用户名</label>
+			<div class="controls">
+				<input type="text" name="username" id="username" placeholder="输入用户名..."/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >密码</label>
+			<div class="controls">
+				<input type="password" name="password" id="password" placeholder="输入密码..."/>
+			</div>
+		</div>
+		<?php if(C('SOFT_VERIFY') <>1):?>
+		<div class="control-group">
+			<label class="control-label">验证码</label>
+			<div class="controls">
+				<input class="input-mini" type="text" name="verify" id="verify" style="text-transform:uppercase;"/><img src="{:U('Public/verify?rand=')}{:uniqid()}" alt="看不清楚请点击刷新验证码" style="cursor : pointer;border:1px solid #ccc;margin-left:2px;" onclick="show(this)"/>
+			</div>
+		</div>
+		<?php endif; ?>
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn btn-primary btn-large">登录</button>&nbsp;
+				<button type="reset" class="btn btn-inverse btn-large">重置</button>
+			</div>
+		</div>
+		<notempty name='Think.get.fromurl'><input type='hidden' name='fromurl' value="{$Think.get.fromurl}"/></notempty>
+		</form></div>
+		</div><!--/span-->
+      
+
+	 </div><!--/row-->
+		
+
+      <hr/>
+
+    <include file="Public:footer"/>
+
+    </div>
+
+ <script>
+function show(obj){
+obj.src="{:U('Public/verify?random=1')}"+ Math.random();
+}
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('username','用户名不能为空!','')) return false;
+		if(EmptyCheckForm('password','密码不能为空!',''))return false;
+		<?php if(C('SOFT_VERIFY') <>1):?>
+		if(EmptyCheckForm('verify','验证码不能为空!',''))return false;
+		<?php endif;?>
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+	<script charset="utf-8" src="__PUBLIC__/Common/Jquery/Jquery.js"></script>
+	<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=twitter"></script>
+	<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+  </body>
+</html>

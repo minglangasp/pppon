@@ -1,0 +1,22 @@
+<input type="button" id="updownfile" value="上传附件">
+<script>
+KindEditor.ready(function(K) {
+				K('#updownfile').click(function() {
+					var editor = K.editor({
+					allowFileManager : true,
+					keepOriginName : false,
+					userAllowUpload:false,
+					removeTitle:true
+				});
+					editor.loadPlugin('insertfile', function() {
+						editor.plugin.fileDialog({
+							fileUrl : '',
+							clickFn : function(url, title) {
+								$('#downloadurl').append(url+'\n');
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+			});
+				</script>

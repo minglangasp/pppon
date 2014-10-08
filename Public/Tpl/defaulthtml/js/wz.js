@@ -1,0 +1,25 @@
+document.writeln("<div style=\"text-align:center;padding:10px;\">");
+document.writeln("<!-- JiaThis Button BEGIN -->");
+document.writeln("<div id=\"jiathis_style_32x32\">");
+document.writeln("	<a class=\"jiathis_button_qzone\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_tsina\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_tqq\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_renren\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_kaixin001\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_douban\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_t163\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_baidu\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_qq\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_tieba\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_hi\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_tsohu\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_email\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_fav\"><\/a>");
+document.writeln("	<a class=\"jiathis_button_copy\"><\/a>");
+document.writeln("	<a href=\"http:\/\/www.jiathis.com\/share\" class=\"jiathis jiathis_txt jtico jtico_jiathis\" target=\"_blank\"><\/a>");
+document.writeln("<\/div>");
+document.writeln("<script type=\"text\/javascript\">var jiathis_config = {data_track_clickback:true};<\/script>");
+document.writeln("<script type=\"text\/javascript\" src=\"http:\/\/v2.jiathis.com\/code_mini\/jia.js\" charset=\"utf-8\"><\/script>");
+document.writeln("<!-- JiaThis Button END -->")
+document.writeln("<\/div>");
+document.writeln("<div id=\"clear\"><\/div>");

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('title','关键词不能为空!','')) return false;
+		if(EmptyCheckForm('url','URL地址不能为空!',''))return false;
+		if(EmptyCheckForm('num','替换次数不能为空!',''))return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<form action="{:U('ArticleLink/doadd')}" name="myform" method="post" onsubmit="return CheckForm()">
+<tr> 
+    <td colspan="3" align="left" class="admintitle">添加关键字链接</td>
+</tr>
+<tr> 
+  <td width="20%" class="b1_1">关键字</td>
+  <td width="80%" colspan="2" class="b1_1"><input name="title" type="text" id="title" value="" size="40" maxlength="50"></td>
+</tr>
+<tr>
+  <td class="b1_1">链接地址</td>
+  <td colspan="2" class="b1_1"><input name="url" type="text" id="url" value="http://" size="40" maxlength="50"></td>
+</tr>
+<tr>
+  <td class="b1_1">替换次数</td>
+  <td colspan="2" class="b1_1"><input name="num" type="text" id="num" value="0" size="8" maxlength="5" onKeyDown="myKeyDown()">
+    <font class="note">一页中此关键字替换的次数,0表示不限</font></td>
+</tr>
+<tr>
+  <td class="b1_1">替换优先级</td>
+  <td colspan="2" class="b1_1"><input name="rank" type="text" id="rank" value="1" size="8" maxlength="5" onKeyDown="myKeyDown()">
+    <font class="note">部分关键词重复时,优先级数字大的优先替换</font></td>
+</tr>
+<tr> 
+  <td width="20%" class="b1_1">
+  <td colspan="2" class="b1_1"><input name="Submit" type="submit" class="bnt" value="添 加">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

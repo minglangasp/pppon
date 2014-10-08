@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery"/>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<script>
+	KindEditor.ready(function(K) { 
+	var editor = K.editor({ allowFileManager : true,removeSize:true,removeAlign:true,removeTitle:true}); 
+	K('#50e5974b00984').click(function() {
+	editor.loadPlugin('image', function() 
+	{ 
+	editor.plugin.imageDialog({ 
+	imageUrl :'', 
+	clickFn : function(url,title) 
+	{ 
+		url = "<img src='"+ url +"'/>";
+		K("textarea[name='content']").val(K("textarea[name='content']").val()+url);
+		editor.hideDialog(); 
+	} 
+	});
+	}); 
+	}); 
+	});
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('title','广告标题不能为空!','')) return false;
+		if(EmptyCheckForm('gid','请选择广告分类!','')) return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+</head>
+<body>
+<table width="100%" border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+  <td colspan="5" class="admintitle">添加广告</td></tr>
+<form action="{:U('Ad/doadd')}" method="post" name="myform" onsubmit="return CheckForm();">
+<tr>
+<td width="20%" class="b1_1">广告名称</td>
+<td colspan='4' class="b1_1"><input name="title" type="text" id="title" size="40" maxlength="20"/></td>
+</tr>
+<tr>
+  <td class="b1_1">图片上传</td>
+  <td colspan='4' class="b1_1"><input type='button' id='50e5974b00984' value='选择图片'/></td>
+</tr>
+<tr> 
+<td width="20%" class="b1_1">广告代码</td>
+<td colspan='4' class="b1_1"><textarea name="content" cols="50" rows="8" id="Content"></textarea></td>
+</tr>
+<tr>
+  <td class="b1_1">广告分类</td>
+  <td colspan='4' class="b1_1"><select id="gid" name="gid">
+  <option value=''>请选择</option>
+  <volist name='grouplist' id="vo">
+	<option value="{$vo.id}">{$vo.name}</option>
+  </volist>
+  </select></td>
+</tr>
+<tr>
+  <td class="b1_1">广告状态</td>
+  <td colspan='4' class="b1_1"><select id="status" name="status">
+	<option value='1'>启用</option>
+	<option value='0'>隐藏</option>
+  </select></td>
+</tr>
+<tr> 
+<td width="20%" class="b1_1"></td>
+<td class="b1_1" colspan='4'><input  type="submit" class="bnt" value="添 加">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+<input type="hidden" name="_from" value="<empty name="Think.get.from">{$_SERVER['HTTP_REFERER']}</empty>"/>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

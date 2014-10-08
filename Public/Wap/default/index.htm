@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html class="strip_template">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="<wk:tplvar name='favico'/>" type="image/x-icon">
+<link rel="apple-touch-icon" href="<wk:tplvar name='touchs'/>">
+<link rel="apple-touch-icon" sizes="72x72" href="<wk:tplvar name='touchm'/>">
+<link rel="apple-touch-icon" sizes="114x114" href="<wk:tplvar name='touchb'/>">
+<title><wk:tplvar name='wap_name'/></title>
+<link rel="stylesheet" href="__THEME__/css/theme.css" type="text/css" media="all" />
+<link rel="stylesheet" href="__THEME__/css/responsive.css" type="text/css" media="all" />
+<link rel="stylesheet" href="__THEME__/css/custom.css" type="text/css" media="all" />
+<script type="text/javascript" src="__THEME__/js/jquery.min.js"></script>
+</head>
+<body>
+	<figure class="strip-menu" data-width="20" data-count="5">
+        <wk:arctype type='top' display='0,3' row='10' field="id,fid,litpic">
+        <section class="strip-item" style="background-image:url(<field name='litpic'/>)">
+            <div class="strip-fadder"></div>
+            <a href="<field name='typeurl'/>?mode=wap" class="wrapped_link"></a>
+            <div class="strip-text">
+                <div>
+                    <h1 class="strip-title"><field name='typename'/></h1>
+                    <h3 class="strip-caption"></h3>
+                </div>
+            </div>
+            <span class="logo"><img src="<wk:tplvar name='logo'/>" alt="" class="logo_def"><img src="<wk:tplvar name='rlogo'/>" alt="" class="logo_retina"></span>          
+        </section>
+        </wk:arctype>
+    </figure>   
+    <script>
+		jQuery(document).ready(function($) {
+			"use strict";
+			jQuery('.strip-item').css({'width': $('.strip-menu').attr('data-width') + '%'});
+			if (jQuery(window).width() > 1024) {
+				var base_width = $('.strip-menu').attr('data-width');
+				var count = $('.strip-menu').attr('data-count');
+				$('section.strip-item').hover(function(){
+					$('.strip-item').css('width', (100-base_width*2)/(count-1)+'%');
+					$(this).css('width', base_width*2+'%');
+				},function(){
+					$('.strip-item').css('width', base_width+'%');				
+				});
+			}
+			if (jQuery(window).width() > 760 && jQuery(window).width() < 1025) {
+				jQuery('.wrapped_link').click(function(e) {
+					if (!jQuery(this).parents('.strip-item').hasClass('hovered')) {
+						var base_width = $('.strip-menu').attr('data-width');
+						var count = $('.strip-menu').attr('data-count');						
+						e.preventDefault();
+						jQuery('.strip-item').removeClass('hovered');
+						jQuery(this).parents('.strip-item').addClass('hovered');
+						jQuery('.strip-item').css('width', (100-base_width*2)/(count-1)+'%');
+						jQuery(this).parents('.strip-item').css('width', base_width*2+'%');
+					}
+				});
+			}
+		});	
+	</script>     
+	<div class="custom_bg"></div>
+	<script type="text/javascript" src="__THEME__/js/jquery-ui.min.js"></script>    
+    <script type="text/javascript" src="__THEME__/js/modules.js"></script>
+	<script type="text/javascript" src="__THEME__/js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+</head>
+<body>
+<form name="myform" method="POST" action="{:U('Backup/dobackup')}">
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+  <td colspan="2" align="left" class="admintitle">数据库分卷备份[<a href="{:U('Backup/upload')}">上传备份文件</a>]</td>
+</tr>
+    <tr bgcolor="#f1f3f5" style="font-weight:bold;">
+    <td width="10%" height="30" align="center" class="ButtonList">&nbsp;</td>
+    <td width="90%" align="center" class="ButtonList">表名</td>
+    </tr>
+	<volist name="tablelist" id="vo"> 
+    <tr>
+    <td height="25" align="center" bgcolor="f7f7f7">{$i}.&nbsp;<input type="checkbox" value="{$vo}" name="ids[]" onClick="unselectall(this.form)" style="border:0;"></td>
+    <td height="25" align="left" bgcolor="f7f7f7">{$vo}</td>
+    </tr>
+	</volist>
+<tr><td align="center" bgcolor="f7f7f7">全选:<input name="Action" type="hidden"  value="Del"><input name="chkAll" type="checkbox" id="chkAll" onClick="CheckAll(this.form)" value="checkbox" style="border:0"></td>
+  <td colspan="1" bgcolor="f7f7f7" align="left">
+ &nbsp;&nbsp;&nbsp;&nbsp; <label>每个分卷文件大小：</label><input type="text" name="filesize" value="1024" size="5" class="ct"> K 
+ &nbsp;&nbsp;&nbsp;&nbsp; <input name="Del" type="submit" class="bnt" id="Del" value="开始备份"></td>
+  </tr></table>
+</form>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

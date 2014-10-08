@@ -1,0 +1,1 @@
+<?php	return array ( 'plugindirname' => 'erweima', 'erweima_height' => '300', 'erweima_width' => '300', );?>
