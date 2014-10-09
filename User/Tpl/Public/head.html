@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="{:U('Index/index')}">{$GLOBALS['cfg_webname']}</a>
+          <div class="nav-collapse collapse">
+            <p class="navbar-text pull-right">
+				<if condition='USER_LOGINED == true'>
+				<a href="{:U('Index/myfile')}" class="navbar-link">欢迎您,{:cookie('uname')}&nbsp;</a>
+				<a href="{:U('Public/loginout')}" class="navbar-link">退出?</a>
+				<else/>
+				<a href="{:U('Public/login')}" class="navbar-link">请先登录&nbsp;</a>
+               <a href="{:U('Public/reg')}" class="navbar-link">注册</a>
+				</if>
+               
+            </p>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>

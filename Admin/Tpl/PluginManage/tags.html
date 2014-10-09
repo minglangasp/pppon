@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+	function onloadtag(id)
+	{
+		$.post("{:U('PluginManage/onloadtag')}", {id:id},
+		function(data)
+		{
+			$.dialog.alert(data.msg);
+		});
+	}
+function ajax(id)
+{
+	$.post("{:U('PluginManage/status')}", {id:id},
+	function(data){
+     if(data=='1')
+	 {
+		window.location.reload(true);
+	 }
+	 else
+	 {
+		$.dialog.alert(data);
+	 }
+   });
+}
+function jconfirm(str,url)
+{
+   $.dialog.confirm(str,function (){window.location.href=url;});
+}
+</script>
+<title>插件管理</title>
+</head>
+ 
+<body>
+<table width="95%" border="0" cellspacing="2" cellpadding="3"  align="center" class="admintable" style="margin-bottom:5px;">
+    <tr>
+      <td align="left" height="25" bgcolor="f7f7f7">快速查找：
+        <SELECT onChange="javascript:window.open(this.options[this.selectedIndex].value,'main')"  size="1" name="s">
+        <OPTION value="" selected>-=请选择=-</OPTION>
+        <OPTION value="{:U('PluginManage/tags')}&title=所有挂载点">所有挂载点</OPTION>
+        <OPTION value="{:U('PluginManage/tags?group=web')}&title=web组挂载点">web组挂载点</OPTION>
+        <OPTION value="{:U('PluginManage/tags?group=user')}&title=user组挂载点">user组挂载点</OPTION>
+        <OPTION value="{:U('PluginManage/tags?group=admin')}&title=admin组挂载点">admin组挂载点</OPTION>
+      </SELECT>      
+	  </td>
+      <td  align="center"  bgcolor="f7f7f7"><form name="form1" method="post" action="{:U('PluginManage/tags')}">
+        <input name="kwd" type="text" id="kwd" value="{$Think.post.kwd}" class="s26">
+        <input type="submit" class="bnt" value="搜挂载点"></form></td>
+      <td align="right" bgcolor="f7f7f7">跳转到：
+        <select  onChange="javascript:window.open(this.options[this.selectedIndex].value,'main')">
+		<option value="">请选择功能</option>
+		<OPTION value="{:U('PluginManage/index')}">插件管理</OPTION>       
+		<OPTION value="{:U('PluginManage/import')}">导入插件</OPTION>       
+		<OPTION value="{:U('PluginManage/tags')}">挂载点</OPTION>       
+		</select>
+		</td>
+    </tr>
+</table>
+ 
+<table border="0" cellspacing="2" cellpadding="3"  align="center" class="admintable">
+<tr> 
+  <td colspan="7" align="left" class="admintitle"><span style="float:right">[<a href="{:U('PluginManage/addtags')}">新增挂载点</a>]</span>挂载点列表<notempty name='Think.get.title'> -> {$Think.get.title}</notempty></td>
+</tr>
+  <tr align="center">
+	<td width="8%" class="ButtonList">挂载点ID</td>
+    <td width="15%" class="ButtonList">组名</td>
+    <td width="15%" class="ButtonList">类名</td>
+    <td width="15%" class="ButtonList">方法名</td>
+    <td width="15%" class="ButtonList">挂载点名称</td>
+    <td width="10%" class="ButtonList">已挂载插件</td>
+    <td width="22%" class="ButtonList">挂载点描述</td>
+  </tr>
+	<volist name="list" id="vo">
+    <tr bgcolor="#f1f3f5" onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+    <td height="25" class="tdleft">{$vo.id}</td>
+    <td height="25" class="tdleft">{$vo.group}</td>
+    <td align="center">{$vo.class}</td>
+    <td align="center">{$vo.action}</td>
+    <td align="center">{$vo.tag}</td>
+    <td align="center"><a href="javascript:;" onclick="onloadtag('{$vo.id}')">查看</a></td>
+    <td align="center">{$vo.description}</td>
+  </tr>
+ </volist>
+<tr>
+<td colspan="7" bgcolor="f7f7f7">
+<div id="page">
+	<ul>
+{$page}
+    </ul>
+</div>
+</td>
+</tr>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

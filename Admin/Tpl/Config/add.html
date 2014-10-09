@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type=text/css rel=stylesheet>
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<title>添加配置项</title>
+</head>
+<body>
+ <script language="javascript">
+ function chk()
+ {
+	return check('varname','变量名');
+	return check('info','参数说明');
+ }
+ function check(id,msg)
+ {
+	if(document.getElementById(id).value=='')
+	{
+		alert(msg + '不能为空!');
+		return false;
+	}
+ }
+ </script>
+<table width="95%" border="0"  align=center cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<form name="myform" action="{:U('Config/doadd')}" method="post" onsubmit="return chk()">
+<tr> 
+    <td colspan="5" class="admintitle">添加配置项</td></tr>
+<tr>
+  <td width="20%" bgcolor="#FFFFFF" class="b1_1">配置变量名</td>
+  <td colspan=4 class=b1_1><input name="varname" id='varname' type="text" value="" size="40" maxlength="50"></td>
+</tr>
+<tr>
+  <td width="20%" bgcolor="#FFFFFF" class="b1_1">参数说明</td>
+  <td colspan=4 class=b1_1><input name="info" id='info' type="text" value="" size="40" maxlength="50"></td>
+</tr>
+<tr>
+  <td width="20%" bgcolor="#FFFFFF" class="b1_1">参数所属组</td>
+  <td colspan=4 class=b1_1>
+  <select name="groupid">
+  <option value='1'>全局设置</option>
+  <option value='2'>用户设置</option>
+  <option value='3'>功能设置</option>
+  <option value='4' selected>其它设置</option>
+  </select></td>
+</tr>
+<tr>
+  <td width="20%" bgcolor="#FFFFFF" class="b1_1">参数类型</td>
+  <td colspan=4 class=b1_1>
+  <select name="type">
+  <option value='string'>字符串|string</option>
+  <option value='radio'>单选项|radio</option>
+  <option value='checkbox'>多选项|checkbox</option>
+  <option value='select'>下拉框|select</option>
+  <option value='textarea'>文本类型|textarea</option>
+  </select></td>
+</tr>
+<tr>
+  <td bgcolor="#FFFFFF" class="b1_1">变量值</td>
+  <td colspan=4 class=b1_1><textarea name="value" cols="80" rows="10" id="value"></textarea></td>
+</tr>
+<tr>
+  <td bgcolor="#FFFFFF" class="b1_1">预设值</td>
+  <td colspan=4 class=b1_1><textarea name="morevalue" cols="80" rows="10" id="morevalue"></textarea></td>
+</tr>
+<tr> 
+<td width="20%" class="b1_1"></td>
+<td colspan=4 class=b1_1><input name="Submit" type="submit" class="bnt" value="提 交">&nbsp;&nbsp;<input type="button" onclick="history.go(-1);" class="bnt" value="返 回"></td>
+</tr>
+</form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Public:copy"/> 
+</div>
+</body>
+</html>

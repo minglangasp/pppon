@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+    <td class="admintitle"><span style="float:right;"><a href="javascript:;" onclick="window.history.go(-1)">[返回]</a></span>RSS订阅插件设置</td>
+</tr>
+<tr id='rsstr'>
+<td  bgcolor="#f7f7f7" align='left'><br/><br/>====整站RSS地址====<br/><br/> <span id='rss1'><a href="{:url('plugin','rss')}" target='_blank'>{$GLOBALS['cfg_basehost']}{:url('plugin','rss')}</a></span><br/><br/><br/></td>
+</tr>
+
+<tr>
+  <td  bgcolor="#f7f7f7" align='left'><br/><br/>====栏目分类RSS地址====<br/><br/> 
+  <volist id='vo' name='list'>
+{$vo.typename}: <a href="{:url('plugin','rss')}?method=arctype&tid={$vo.id}" target='_blank'>{$GLOBALS['cfg_basehost']}{:url('plugin','rss')}?method=arctype&tid={$vo.id}</a> <br/><br/> 
+  </volist>
+  </td>
+</tr>
+<tr><td align='left' style="color:red"><br/><br/>====任意栏目 RSS订阅地址====<br/><br/> {$GLOBALS['cfg_basehost']}{:url('plugin','rss')}?method=arctype&tid=栏目ID <br/><br/>====模板标签调用示例====<br/><br/>&lt;wk:field name='typeid' function="url('plugin','rss').'method=arctype&tid='.@me" /&gt;<br/><br/></td></tr>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

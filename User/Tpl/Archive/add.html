@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{$GLOBALS['cfg_webname']}-发布文档</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="会员中心">
+    <meta name="author" content="歪酷CMS">
+    <link href="__PUBLIC__/User/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+	.none
+	{
+		display:none;
+	}
+    </style>
+   <link href="__PUBLIC__/User/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+   <script charset="utf-8" src="__PUBLIC__/Common/Jquery/Jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/setdate/WdatePicker.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Editor/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=twitter"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+   <link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <include file="Public:head"/>
+    <div class="container-fluid">
+      <div class="row-fluid">
+		<include file="Public:left"/>
+		<div class="span9">
+		<div class="navbar">
+		<div class="navbar-inner">
+		<a class="brand">发布文档</a>
+		<ul class="nav">
+		<li class="active" id="tab1"><a href="javascript:;" onclick="ntab(1);">基本属性</a></li>
+		<li id="tab2"><a href="javascript:;" onclick="ntab(2);" >高级属性</a></li>
+		<li id="tab3"><a href="javascript:;" onclick="ntab(3);" >扩展属性</a></li>
+		</ul>
+		</div>
+		</div>
+		</div>
+       <div class="span9" style='border:1px solid #ccc;margin-bottom:10px;'>
+	   <div style="padding:20px">
+		<form class="form-horizontal" id="myform" name="myform" action="{:U('Archive/doadd')}" onsubmit="return CheckForm()" method='post'>
+		<div id="ntab01">
+		<div class="control-group">
+			<label class="control-label" >文档标题</label>
+			<div class="controls">
+				<input type="text" name="title" id="title" placeholder="60字以内..." style="width:400px;" value="{$archivelist.title}"/><input name="color" value="{$archivelist.color}" type="hidden" id="color" Readonly>
+	  <img src="__PUBLIC__/Admin/images/Rect.gif" style="border:0;cursor:pointer;height:30px;<notempty name='archivelist.color'>background:{$archivelist.color}</notempty>" title="选取标题颜色" align="absmiddle" id="colorpicker"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >自定义属性</label>
+			<div class="controls">
+				<volist name="flagtreelist" id="vo">
+    {$vo.value}<input name="flag-{$vo.key}" type="checkbox" group="basic"  id="flag-{$vo.key}" value="{$vo.key}" {$vo.checked}/>
+	</volist>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >文档主栏目</label>
+			<div class="controls">
+				<select ID="typeid" name="typeid" group="basic">
+	<option value='0'>请选择</option>
+	<volist name="selecttreelist" id="vo">
+<option value='{$vo.id}' {$vo.selected}><php>
+for($i=0;$i<$vo['count']*4;$i++){
+echo '&nbsp;';
+}
+</php><neq name='vo.fid' value='0'> &nbsp;-|&nbsp;</neq>{$vo.typename}</option></volist>
+</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >缩略图</label>
+			<div class="controls">
+				<input type="text" name="litpic" id="litpic" value="{$archivelist.litpic}"/>&nbsp;&nbsp;<input type="button" class="btn"  id="litpic-up" value="选择图片"/>
+			</div>
+		</div>
+		{$taglist.basic}
+		</div>
+		<div id="ntab02" class="none">
+		<div class="control-group">
+			<label class="control-label">短标题</label>
+			<div class="controls">
+				<input type="text" name="shorttitle" id="shorttitle" value="{$archivelist.shorttitle}" placeholder="36字以内..." style="width:300px;"/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >关键字</label>
+			<div class="controls">
+				<input type="text" name="keywords" id="keywords" value="{$archivelist.keywords}" placeholder="请输入关键字..."/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >作者</label>
+			<div class="controls">
+				<input type="text" name="writer" value="{$archivelist.writer}" id="writer" placeholder="请输入作者..."/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >来源</label>
+			<div class="controls">
+				<input type="text" name="source" id="source" value="{$archivelist.source}" placeholder="请输入来源..."/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" >内容摘要</label>
+			<div class="controls">
+				<textarea name="description" id="description"  style="width:300px;height:100px;">{$archivelist.description}</textarea>
+			</div>
+		</div>
+		{$taglist.advance}
+		</div>
+		<div id="ntab03" class="none">
+		{$taglist.extend}
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn btn-primary btn-large">提交</button>&nbsp;&nbsp;
+				<button type="reset" class="btn btn-inverse btn-large">重置</button>
+			</div>
+		</div>
+		<input type="hidden" name="modelid" value="{$Think.get.modelid}"/>
+		<input type="hidden" name="mid" value="{:cookie('uid')}"/>
+		</form></div>
+		</div><!--/span-->
+      
+
+	 </div><!--/row-->
+		
+
+      <hr/>
+
+       <include file="Public:footer"/>
+
+    </div>
+	<!--/.fluid-container-->
+<script> 
+KindEditor.ready(function(K){
+				var colorpicker;
+				K('#colorpicker').bind('click', function(e) {
+					e.stopPropagation();
+					if (colorpicker) {
+						colorpicker.remove();
+						colorpicker = null;
+						return;
+					}
+					var colorpickerPos = K('#colorpicker').pos();
+					colorpicker = K.colorpicker({
+						x : colorpickerPos.x,
+						y : colorpickerPos.y + K('#colorpicker').height(),
+						z : 19811214,
+						selectedColor : 'default',
+						noColor : '无颜色',
+						click : function(color) {
+							K('#color').val(color);
+							K('#colorpicker').css("background",color);
+							colorpicker.remove();
+							colorpicker = null;
+						}
+					});
+				});
+				K(document).click(function() {
+					if (colorpicker) {
+						colorpicker.remove();
+						colorpicker = null;
+					}
+				});
+				var editor = K.editor({allowFileManager :false,userAllowUpload:true}); 
+	K('#litpic-up').click(function() {
+					editor.loadPlugin('image', function() {
+						if(K('#litpic').val()=='')
+						{
+							editor.plugin.imageDialog({
+							imageUrl : K('#litpic').val(),
+							clickFn : function(url, title, width, height, border, align) {
+									K('#litpic').val(url);
+									if(width!='')width = ' width="' + width +'"';
+									if(title!='') title = ' title="' + title +'" alt="'+title+'"';
+									if(height!='') height = ' height="' + height +'"';
+									if(align!='') align = ' align="' + align +'"';
+									if(border!='') border = ' border="' + border +'"';
+									if(url!=''){
+									editor_Content.insertHtml('<img '+title + width + height + align + 'src="'+url+'"/>');
+									K('#flag-p').attr('checked','checked');
+									}
+									else
+									{
+										K('#flag-p').removeAttr('checked');
+									}
+									editor.hideDialog();
+								}
+							});
+						}
+						else
+						{
+							editor.plugin.imageDialog({
+							imageUrl : K('#litpic').val(),
+							clickFn : function(url, title, width, height, border, align) {
+									K('#litpic').val(url);
+									K('#flag-p').attr('checked','checked');
+									editor.hideDialog();
+								}
+							});
+						}
+						
+					});
+				});
+				
+			K('#redirecturl').click(function() {
+				if(K('#redirecturl').val() ==''){url ='http://';}else{url=K('#redirecturl').val();} 
+					$.dialog.prompt('请输入网址', function (val) {
+			K('#flag-j').attr('checked','checked');
+			if(val =='' || val=='http://'){K('#flag-j').removeAttr('checked');K('#redirecturl').val('http://');}else{K('#redirecturl').val(val);}
+}, url);
+ 
+				});
+			});
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('title','标题不能为空!','')) return false;
+		if(EmptyCheckForm('typeid','请选择栏目!','0'))return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+	function ntab(i)
+	{
+		$('.nav > li').removeClass('active'); $('#tab'+i).addClass('active');
+		$('#ntab01').addClass('none');$('#ntab02').addClass('none');$('#ntab03').addClass('none');
+		$('#ntab0'+i).removeClass('none');
+	}
+</script> 
+  </body>
+</html>

@@ -1,0 +1,12 @@
+﻿CREATE TABLE IF NOT EXISTS `#@__addonjob` (
+  `id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `typeid` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `body` mediumtext COMMENT '幻灯描述',
+  `redirecturl` varchar(255) NOT NULL,
+  `slideurl` mediumtext,
+  PRIMARY KEY (`id`),
+  KEY `typeid` (`typeid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+###
+INSERT INTO `#@__arcmodel` (`id`, `nid`, `typename`, `titlename`, `fieldset`, `addtable`, `issystem`, `status`) VALUES
+(__LINE__, 'slide', '幻灯', '幻灯标题', '<fieldset>\r\n<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field name="slideurl" tag="textarea"  id="downloadurl" group="basic" style="width:800px;height:40px;" alt="幻灯地址" src="./Public/Model/slide/upload.html"/>\r\n<field name="body" tag="editor" id="Content" group="basic" style="width:800px;height:300px;" alt="幻灯描述" />\r\n</fieldset>', 'addonjob', 1, 0);

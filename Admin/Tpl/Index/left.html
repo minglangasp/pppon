@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<link href="__PUBLIC__/Admin/images/left.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Admin/images/font-awesome.min.css" type="text/css" rel="stylesheet">
+<script src="__PUBLIC__/Admin/js/menuswitch.js"></script>
+</head>
+
+<body>
+<table width="177" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout:fixed">
+      <tr>
+        <td>
+		<div class="menuDiv"> 
+	  <h3><i class="fa fa-file-text"></i>模型分类</h3> 	  
+	  <ul> 	    
+		<li><a href="{:U('Arcmodel/index')}&from=frame" target="main">模型管理</a> | <a href="{:U('Arcmodel/import')}&from=frame" target="main">导入模型</a></li>
+		<li><a href="{:U('Type/index')}&from=frame" target="main">栏目管理</a> | <a href="{:U('Type/add')}&from=frame" target="main">添加栏目</a></li>
+	  </ul>
+	</div>
+	<div class="menuDiv"> 
+	  <h3><i class="fa fa-file-text"></i>内容管理</h3> 	  
+	  <ul> 
+		<notempty name="list">
+		<volist name="list" id="vo">
+		<li><a href="{:U('Archive/index?modelid=')}{$vo.id}&from=frame" target="main">{$vo.typename}管理</a> | <a href="{:U('Archive/add?modelid=')}{$vo.id}&from=frame" target="main">添加{$vo.typename}</a></li>
+		</volist>
+		<else/>
+			<li><a href="{:U('Archive/index?modelid=1')}&from=frame" target="main">文档管理</a> | <a href="{:U('Archive/add?modelid=1')}&from=frame" target="main">添加文档</a></li>
+		</notempty>
+	   <li><a href="{:U('Guestbook/index')}&from=frame" target="main">留言管理</a></li>
+	  </ul>
+	</div>
+		<div class="menuDiv"> 
+	  <h3><i class="fa fa-file-text"></i>会员管理</h3> 	  
+	  <ul> 	    
+		<li><a href="{:U('Member/index')}&from=frame" target="main">会员管理</a> | <a href="{:U('Member/rank')}&from=frame" target="main">会员等级</a></li>
+	  </ul>
+	</div>
+	<div class="menuDiv"> 
+	  <h3><i class="fa fa-file-text"></i>辅助功能</h3> 	  
+	  <ul> 
+		<li><a href="{:U('PluginManage/index')}&from=frame" target="main">插件管理</a> | <a href="{:U('PluginManage/import')}" target="main">安装插件</a></li>
+		<li><a href="{:U('Tpl/index')}&from=frame" target="main">主题管理</a> | <a href="{:U('Wap/index')}&from=frame" target="main">WAP主题</a></li>
+		<li><a href="{:U('Ad/index')}&from=frame" target="main">广告管理</a> | <a href="{:U('Special/index')}&from=frame" target="main">专题管理</a></li>
+		<li><a href="{:U('ArticleLink/index')}&from=frame" target="main">文章内链</a> | <a href="{:U('Vote/index')}&from=frame" target="main">投票管理</a></li>
+		<li><a href="{:U('Friendlink/index')}&from=frame" target="main">友情链接</a> | <a href="{:U('Tag/index')}&from=frame" target="main">TAG关键词</a></li>
+		<li><a href="{:U('Backup/intsql')}&from=frame" target="main">sql执行器</a> | <a href="{:U('Backup/repsql')}&from=frame" target="main">数据替换器</a></li>
+		</ul>
+	</div>
+	<div class="menuDiv"> 
+	  <h3><i class="fa fa-file-text"></i>数据安全</h3> 	  
+	  <ul> 	    
+		<li><a href="{:U('Backup/index')}&from=frame" target="main">数据备份</a> | <a href="{:U('Backup/restore')}&from=frame" target="main">数据还原</a></li>
+		<li><a href="{:U('FileManage/index')}&from=frame" target="main">文件管理</a> | <a href="{:U('Update/manage')}&from=frame" target="main">更新管理</a></li>
+		</ul>
+	</div>
+
+    <div class="menuDiv1"> 
+	  <h3><i class="fa fa-file-text"></i>版权信息</h3> 
+	  <ul> 	    
+		<li>PPPON-无界 版权所有</li>
+		<li>官网：<a href="http://www.pppon.net" target="_blank">pppon.com</a></li>
+		<li>开发团队：无界网络</li>
+	  </ul>
+	</div>
+          </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<script language="javascript">
+	var mSwitch = new MenuSwitch("menuDiv");
+	mSwitch.setDefault(1);
+	mSwitch.setPrevious(false);
+	mSwitch.init();
+</script></body>
+</html>

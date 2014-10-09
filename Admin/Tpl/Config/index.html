@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<style> 
+td {font-size:13px;}
+</style>
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<script src="__PUBLIC__/Admin/js/admin.js"></script>
+<script>
+function killErrors() {
+return true;
+}
+window.onerror = killErrors;
+</script>
+
+</head>
+<body>
+<form name='frm' method='post' action="{:U('Config/update')}">
+<div class="nTableft admintable">
+      	<div class="TabTitleleft">
+      		<ul id="myTab1">
+					<volist id='vo' name='grouplist'>
+					<li class="<eq name='i' value='1'>active<else/>normal</eq>" onClick="nTabs(this,{$i-1});" style="width:{$percent}%">{$vo.groupname}</li>
+					</volist>
+      		</ul>
+    	</div>
+		<div style="clear:both;background:#EEFCDD;">
+		<table width="100%" style="margin:5px 0;border:0;text-align:center;">
+  <tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+    <td width="30%" align="center">参数说明[<a href="{:U('Config/add');}">添加配置项</a>]</td>
+    <td width="55%" align="center">参数值</td>
+    <td width="15%" align="center">变量名</td>
+  </tr>
+</table>
+</div>
+
+	<volist name="configlist" id='vlist' key='v'>
+
+		<div id="myTab1_Content{$v-1}"  style="clear:both;" <neq name='v' value='1'> class='none'</neq>>
+<table width="100%" border="0"  align=center cellpadding="3" cellspacing="1" style="margin:5px 0;background:#FFF">
+	
+		<volist name='vlist' id='vo'>
+		<tr onMouseOver="this.style.backgroundColor='#EEFCDD';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+			<td width="30%" align="left">{$vo.info}
+				<div id='h{$vo.varname}' style="color:#ccc;letter-spacing: 0px;font-size:12px;"></div>
+		  	</td>
+			<td width="55%" align="left">
+				<eq name='vo.type' value='textarea'>
+				<textarea class='css_textarea' name="{$vo.varname}" type="text" id="o{$vo.varname}" onFocus="h{$vo.varname}.style.color='blue';" onBlur="h{$vo.varname}.style.color='#ccc';" cols="50" rows="5" >{$vo.value}</textarea>  
+				</eq>
+				<eq name='vo.type' value='string'>
+				<input name="{$vo.varname}" type="text" id="o{$vo.varname}" onFocus="h{$vo.varname}.style.color='blue';" onBlur="h{$vo.varname}.style.color='#ccc';" value="{$vo.value}" style="width:300px;">
+				</eq>
+				<eq name='vo.type' value='radio'>
+				{$vo.select}
+				</eq>
+				<eq name="vo.type" value="select">
+				<select class='css_select' name="{$vo.varname}" type="text" id="o{$vo.varname}" onFocus="h{$vo.varname}.style.color='blue';" onBlur="h{$vo.varname}.style.color='#ccc';" style="width:150px;">
+				{$vo.select}
+				</select>
+				</eq>
+				<eq name="vo.type" value="checkbox">
+				{$vo.select}
+				</eq>
+		  </td>
+		  <td width="15%" align="left">{$vo.varname}</td>
+	  </tr>
+	  </volist>
+	
+		<tr class="css_page_list">
+			<td height="30" colspan="2" align="center">
+		  <input type='submit' class="bnt" value=' 保 存 '></td>
+		</tr>
+</table>
+   		</div>
+		
+		
+		</volist>
+		
+		</div>
+</form>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" />
+</div>
+</body>
+</html>

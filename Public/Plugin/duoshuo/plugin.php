@@ -1,0 +1,1 @@
+<?php	return array ( 'pluginname' => 'duoshuo', 'short_name' => 'waikucms', 'hotlist-range' => '0', 'hotlist-items' => '10', 'visitor-items' => '5', 'newlist-items' => '5', 'newlist-show-avatars' => '1', 'newlist-show-time' => '1', 'newlist-show-title' => '1', 'newlist-show-admin' => '1', 'newlist-excerpt-length' => '70', );?>

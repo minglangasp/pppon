@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery,Admin.setdate.WdatePicker"/>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+	function alertcheck()
+	{
+		if(checkselectId()==false)
+		{
+			$.dialog.alert('请勾选ID记录!');
+		}
+	}
+	function checkselectId()
+	{
+		var ch =  $('.ids');
+		var input = '';
+		for(var i=0; i<ch.length;i++)
+		{
+			if(ch[i].checked == true)
+			{
+				input += ch[i].value+',';
+			}       
+		}
+		if(input=='') return false;
+		return input;
+	}
+</script>
+<body>
+<form name="myform" method="POST" action="{:U('Vote/delall')}" onsubmit="return checkselectId()">
+<table border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+  <td colspan="7" align="left" class="admintitle">所有投票　[<a href="{:U('Vote/add')}">添加</a>]</td>
+</tr>
+  <tr align="center"> 
+    <td colspan="2" class="ButtonList">投票标题</td>
+    <td width="9%" class="ButtonList">ID号</td>
+    <td width="28%" class="ButtonList">投票时间</td>
+    <td width="11%" class="ButtonList">状态</td>
+    <td width="17%" class="ButtonList">操 作</td>
+  </tr>
+  <volist name="list" id="vo"> 
+    <tr bgcolor="#f1f3f5" onMouseOver="this.style.backgroundColor='#EAFCD5';this.style.color='red'" onMouseOut="this.style.backgroundColor='';this.style.color=''">
+    <td width="5%" height="25" align="center"><input type="checkbox" class='ids' value="{$vo.id}" name="id[]" onClick="unselectall(this.form)" style="border:0;"></td>
+    <td width="30%" class="tdleft"><a href="{:U('Vote/edit?id=')}{$vo.id}">{$vo.title}</a></td>
+    <td height="25" align="center">{$vo.id}</td>
+    <td height="25" align="center">{$vo.starttime|date="Y-m-d H:i:s",###}至{$vo.overtime|date="Y-m-d H:i:s",###}</td>
+    <td height="25" align="center"><a href="{:U('Vote/status?id=')}{$vo.id}"><eq name="vo.status" value="1"><font color="green">显示</font><else/><font color='red'>隐藏</font></eq></a></td>
+    <td align="center"><a href="{:U('Vote/edit?id=')}{$vo.id}">编辑</a> <a href="{:U('Vote/show?id=')}{$vo.id}">查看结果</a></td>
+    </tr>
+  </volist>
+<tr>
+  <td align="center" bgcolor="#F2F9E8"><input name="Action" type="hidden"  value="Del"><input name="chkAll" type="checkbox" id="chkAll" onClick="CheckAll(this.form)" value="checkbox" style="border:0"></td>
+  <td align="center" class="b1_1"><input name="Del" type="submit" class="bnt" id="Del" value="隐藏" onclick="alertcheck()">
+    <input name="Del" type="submit" class="bnt" id="Del" value="显示" onclick="alertcheck()">
+    <input name="Del" type="submit" class="bnt" id="Del" value="删除" onclick="alertcheck()"></td>
+  <td colspan="6" align="center" class="b1_1"></td>
+  </tr>
+<tr>
+  <td colspan="7" align="center" class="b1_1"><div id="page">
+	<ul style="text-align:left;">
+{$page}
+    </ul>
+</div></td>
+</tr>
+</table>
+</form>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

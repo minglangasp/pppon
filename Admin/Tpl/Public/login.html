@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员登陆</title>
+<link href="__PUBLIC__/Admin/images/login.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Admin/images/font-awesome.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<script language="javascript">
+<?php if(isset($_GET['target']) && $_GET['target']=='frame'):?>
+parent.parent.window.location.href='{:U('Public/login')}';
+<?php endif; ?>
+function chk(){
+		if(document.getElementById('AdminName').value==""){
+		alert('用户名不能为空!');
+		document.getElementById('AdminName').focus();
+		return false;
+	}
+	if(document.getElementById('adminpwd').value==""){
+		alert('密码不能为空!');
+		document.getElementById('adminpwd').focus();
+		return false;
+	}
+	if(document.getElementById('verify').value==""){
+		alert('验证码不能为空!');
+		document.getElementById('verify').focus();
+		return false;
+	}
+}
+</script>
+
+<div class="login">
+	<h4 class="innerAll margin-none border-bottom text-center"><i class="fa fa-lock"></i> PPPON-无界管理后台</h4>
+	<div class="placeholder text-center"><i class="fa fa-lock"></i></div>
+	<div class="panel panel-default col-sm-6 col-sm-offset-3">
+
+	  <div class="panel-body">
+		<form name="form1" method="post" action="{:U('Public/checklogin')}" onsubmit="return chk();">
+
+		  <div class="form-group">
+			<label for="exampleInputEmail1">用户名</label>
+			<input name="username" type="text" class="lyform" id="AdminName" />
+		  </div>
+		  <div class="form-group">
+			<label for="exampleInputPassword1">密 码</label>
+			<input name="password" type="password" class="lyform" id="adminpwd" />
+		  </div>
+		  <div class="form-group">
+			<label for="exampleInputPassword1">验证码</label>
+			<input name="verify" type="text" class="lyform"  id="verify" size="5" maxlength="5"  style="width:100px; text-transform:uppercase;"/>
+			<img class="checkimg" src="{:U('Public/verify?rand=')}{:uniqid()}" alt="看不清楚请点击刷新验证码" onclick="show(this)"/>
+		  </div>
+  
+		  <div class="button">
+			<input type="image" width="70" height="28" src="__PUBLIC__/Admin/images/login_r4_c4_r1_c1.jpg" name="button" id="button" value="提交" />
+		  <img src="__PUBLIC__/Admin/images/login_r4_c4_r1_c2.jpg" width="70" height="28" onClick="document.form1.reset()" style="cursor:pointer;"/>
+		  </div>
+		</form>
+	   
+	  </div>
+	
+	</div>
+	<div class="bottom text-center">{:C('SOFT_NAME')}&nbsp;{:C('SOFT_VERSION')}</div>
+</div>
+</body>
+</html>
+<script>
+function show(obj){
+obj.src="{:U('Public/verify?random=1')}"+ Math.random();
+}
+</script>

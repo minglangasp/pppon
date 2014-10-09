@@ -1,0 +1,19 @@
+全选<input type="checkbox" class="noborder" id="select-all" />
+<script>
+$('#select-all').click(function(){
+if($('#select-all').attr("checked")=='checked')
+{
+	for (var i=0;i<7;i++)
+	{
+		$('#soft_platform-'+i).attr("checked",true);
+	}
+}
+else
+{
+	for (var i=0;i<7;i++)
+	{
+		$('#soft_platform-'+i).attr("checked",false);
+	}
+}
+});
+</script>

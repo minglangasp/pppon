@@ -1,0 +1,230 @@
+/* Theme Options */
+
+/*
+	--//-- 1. Color Options --//--
+
+	- Theme color - 6d8583 (rgba - 109,133,131);
+	- Main text color - 777979;
+	- Heading color - 353e3d;
+	- Page title heading color - 353e3d;
+	- Footer text color - 353e3d;
+	- Main menu text color - 353e3d;
+	- Submenu text color - 353e3d;	
+	
+	--//-- 2. Theme Fonts --//--
+   
+	- Main font - Open Sans;
+	- Headers font - Microsoft YaHei;
+	
+*/
+	
+
+/* Default background color */
+body {
+	background:#ebebeb;
+}
+.custom_bg {
+    background-color:#ebebeb;
+}
+
+/* Menu panel background */
+.menu-left .menu > li > a > span,
+.menu-top.short_header .menu > li > a span {
+	background-color:rgba(109,133,131, 0.85);
+}
+.fw_line {
+	background-color:rgba(109,133,131, 0.8);
+}
+
+/* Main menu text color */
+.main_header .menu span	{
+	color:#ffffff !important;
+}
+.main_header .sub-menu span,
+.menu-top .sub-menu li:before {
+	color:#ffffff !important;
+}
+
+/* Footer text color */
+.footer, .footer .copyright,
+section.socials li a:before,
+section.socials li a:hover:before {
+	color:#ffffff;
+}
+
+/* Selection background */
+::selection {background:#6d8583;
+}
+::-moz-selection {background:#6d8583;
+}
+
+.highlighted_colored,
+header,
+.gallery_item_wrapper .gallery_fadder,
+.shortcode_button.btn_type5,
+.shortcode_button.btn_type1:hover,
+.featured_items .img_block .featured_item_fadder,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.grid-port-fadder,
+.price_item.most_popular .price_item_title,
+.widget_tag_cloud a:hover,
+.flickr_fadder,
+.strip-fadder,
+.main_header .sub-menu,
+.menu-top .sub-menu li {
+	background-color:#6d8583;
+}
+a:hover,
+.dropcap.type2,
+.dropcap.type5,
+.most_popular .price_item_cost h2,
+.most_popular .price_item_cost h6,
+blockquote.shortcode_blockquote.type5:before,
+.masonry_blog_wrapper .blogpost_title:hover,
+.masonry_blog_wrapper .blogpost_readmore:hover,
+.block-port-categ a:hover,
+a.blogpost_title:hover,
+.contact_info_wrapper a:hover,
+.sidepanel a:hover,
+.widget_posts .post_title:hover {
+	color:#6d8583;
+}
+.shortcode_iconbox > a:hover .iconbox_body,
+.shortcode_iconbox > a:hover .iconbox_body p,
+.shortcode_iconbox > a:hover .iconbox_title,
+.shortcode_iconbox > a:hover .ico i,
+.pagerblock li a:hover,
+.count_ico:hover i {
+	color:#6d8583!important;
+}
+blockquote.shortcode_blockquote.type2 .blockquote_wrapper,
+.promoblock_wrapper,
+.module_cont hr.type3,
+.testimonial_item_wrapper .testimonials_photo,
+.blogpost_user_meta,
+.commentlist .stand_comment {
+	border-color:#6d8583!important;
+}
+.menu-left.short_header .menu > li > a > span:before {
+	border-right-color:rgba(109,133,131,0.85)!important;
+}
+.menu-top.short_header .menu > li > a span:before {
+	border-bottom-color:rgba(109,133,131,0.85)!important;
+}
+
+/* Scroll (striped page) background */
+.jspTrack {
+	background-color:rgba(109,133,131,0.4);
+}
+.jspDrag {
+	background:#6d8583!important;
+}
+
+/* Typography */
+*,
+.optionset li:before,
+.pagerblock li:before,
+.main_header .sub-menu span {
+	font-family: "Microsoft YaHei", sans-serif;
+	font-weight:400;
+}
+p, td, div,
+blockquote p,
+.team_desc ul {
+	font-size:13px;
+	line-height:20px;
+	color:#777979;
+}
+h1, h2, h3, h4, h5, h6,
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	font-family: "Microsoft YaHei", sans-serif;
+	-moz-osx-font-smoothing:grayscale;
+	-webkit-font-smoothing:antialiased;    
+	text-decoration:none!important;
+	padding:0;
+	color:#353e3d;
+}
+.iconbox_header .ico i {
+	color:#353e3d;
+}
+.title {
+	color:#353e3d;
+}
+h1, h1 span, h1 a {
+	font-size:54px;
+	line-height:56px;
+}
+h2, h2 span, h2 a {
+	font-size:42px;
+	line-height:44px;
+}
+h3, h3 span, h3 a {
+	font-size:28px;
+	line-height:30px;
+}
+h4, h4 span, h4 a {
+	font-size:24px;
+	line-height:26px;
+}
+h5, h5 span, h5 a {
+	font-size:20px;
+	line-height:22px;
+}
+h6, h6 span, h6 a {
+	font-size:16px;
+	line-height:18px;
+}
+.dropcap,
+.shortcode_button,
+.main_header .menu > li > a span,
+.easyPieChart,
+.easyPieChart span,
+.shortcode_tab_item_title,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.fw_line .pagerblock li a,
+section.copyright,
+.fw_line_wrapper .optionset a,
+.pp_block .post-password-form p,
+.countdown-period,
+.countdown-amount {
+	font-family: "Microsoft YaHei", sans-serif;
+	-moz-osx-font-smoothing:grayscale;
+	-webkit-font-smoothing:antialiased;		
+}
+.strip_template figure section .strip-text h1,
+.strip_template figure section .strip-text h3 {
+	font-family: "Microsoft YaHei", sans-serif;
+	-moz-osx-font-smoothing:grayscale;
+	-webkit-font-smoothing:antialiased;		
+}
+.contentarea .ngg-tagcloud .wp-tag-cloud li a:hover {
+	background:#6d8583 !important;
+	color:#fff !important;
+}
+.grid-port-item .grid-port-fadder,
+.strip-fadder,
+.gallery_item_wrapper .gallery_fadder,
+.featured_items .img_block .featured_item_fadder {
+	background-color:rgba(109,133,131,0);
+}
+.grid-port-item:hover .grid-port-fadder,
+.strip_template figure section:hover .strip-fadder,
+.strip_template figure section.hovered .strip-fadder,
+.featured_items .img_block:hover .featured_item_fadder {
+	background-color:rgba(109,133,131,0.85);
+}
+.gallery_item_wrapper:hover .gallery_fadder {
+	background-color:rgba(109,133,131,0.7);
+}
+@media only screen and (max-width: 760px) {
+	.strip_template figure section .strip-fadder {
+		background-color:rgba(109,133,131,0.85);
+	}
+}
+
+

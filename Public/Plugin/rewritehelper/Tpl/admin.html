@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Ajax,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+function remotedownload()
+{
+		art.dialog.tips('正在获取数据包...',60);
+		$.post("{:U('Plugin/index?name=rewritehelper&method=remotedownload')}", function(data){
+		window.location.reload(true);
+		});
+}
+function openrewrite(id)
+{
+	if(id==0)
+	{
+		$.post("{:U('Plugin/index?name=rewritehelper&method=openrewrite&id=0')}", function(data){
+		window.location.reload(true);
+		});
+	}
+	if(id==1)
+	{
+		$.post("{:U('Plugin/index?name=rewritehelper&method=openrewrite&id=1')}", function(data){
+		window.location.reload(true);
+		});
+	}
+}
+</script>
+</head>
+<body>
+<table width="95%" border="0"  align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+<tr> 
+    <td class="admintitle"><span style="float:right;"><a href="javascript:;" onclick="window.history.go(-1)">[返回]</a></span>伪静态助手</td>
+</tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;">====伪静态检测====</td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span>正在检测系统环境...</span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span>您的操作系统:<php> echo PHP_OS;</php>... </span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span>您的运行环境:<php> echo $_SERVER["SERVER_SOFTWARE"];</php>... </span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span>伪静态文件检测...</span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span><if condition="$rewritefile==true"><font color="green">伪静态文件已上传!</font>&nbsp;<a href='{:U('FileManage/edit?dir=%2F.htaccess')}' target='_blank'>编辑伪静态文件</a><else/><font color="red">没有发现伪静态文件!</font>&nbsp;<a href='javascript:;' onclick='remotedownload()'>一键获取</a></if></span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span>系统伪静态配置检测...</span></td></tr>
+<tr><td  bgcolor="#f7f7f7" align='left' style="padding:10px;"><span><eq name='cfg_rewrite' value='0'><font color="green">系统已开启伪静态!</font>&nbsp;<a href='javascript:;' onclick='openrewrite(0)'>关闭伪静态</a><else/><font color="red">伪静态没有开启!</font>&nbsp;<a href='javascript:;' onclick='openrewrite(1)'>开启伪静态</a></eq></span></td></tr>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

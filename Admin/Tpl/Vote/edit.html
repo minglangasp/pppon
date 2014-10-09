@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>网站后台管理</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery,Admin.setdate.WdatePicker"/>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('title','投票标题不能为空!','')) return false;
+		if(EmptyCheckForm('starttime','开始时间不能为空!','')) return false;
+		if(EmptyCheckForm('overtime','结束时间不能为空!','')) return false;
+		if(EmptyCheckForm('content','投票内容不能为空!','')) return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+</head>
+<body>
+  <table width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#f7f7f7" class="admintable">
+  <form name="add" method="post" action="{:U('Vote/doedit')}">
+  <tr>
+      <td colspan="2" align="center" class="admintitle">修改投票</td>
+    </tr>
+    <tr>
+      <td width="15%" align="center" bgcolor="#FFFFFF">投票名称：      </td>
+      <td width="85%" bgcolor="#FFFFFF" align="left"><input name="title" type="text" class="input" id="t0" value="{$list.title}" size="50" maxlength="50"></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFFFFF">投票选项：      </td>
+      <td bgcolor="#FFFFFF" align="left"><input name='type' type='radio' class="noborder" value='0' <eq name="list.type" value="0">checked</eq>/>
+      单选 <input  name='type' type='radio' class="noborder" value='1' <eq name="list.type" value="1">checked</eq>/>
+      多选</td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFFFFF">项目内容：</td>
+      <td bgcolor="#FFFFFF" align="left">
+      <textarea name="content" id="content" cols="50" rows="10">{$list.content}</textarea></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#FFFFFF">投票时间：</td>
+      <td bgcolor="#FFFFFF" align="left"><input name="starttime" id="starttime" type="text" class="input" value="{$list.starttime|date='Y-m-d H:i:s',###}"  onFocus="WdatePicker({isShowClear:false,readOnly:true,startDate:'1988-01-01',minDate:'1960-01-01 00:00:00',maxDate:'2088-12-31 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'whyGreen'})" />
+        -
+        <input name="overtime" id="overtime" type="text" class="input" value="{$list.overtime|date='Y-m-d H:i:s',###}"  onFocus="WdatePicker({isShowClear:false,readOnly:true,startDate:'1988-01-01',minDate:'1960-01-01 00:00:00',maxDate:'2088-12-31 23:59:59',dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'whyGreen'})" /></td>
+    </tr>
+   <tr>
+	<td align="center" bgcolor="#FFFFFF">投票状态：</td>
+	<td bgcolor="#FFFFFF"  align="left"><select name="status">
+	<option value='0' <eq name="list.status" value='0'>selected='selected'</eq>>停用</option>
+	<option value='1' <eq name="list.status" value='1'>selected='selected'</eq>>启用</option>
+	</select></td>
+	</tr> 
+    <tr>
+	  <td bgcolor="#FFFFFF">&nbsp;</td>
+	  <input type="hidden" name="id" value="{$list.id}">
+      <td bgcolor="#FFFFFF" align="left"><input name="Submit" type="submit" class="bnt" value=" 保 存 ">
+        <input name="Submit22" type="button" class="bnt" onClick="history.go(-1)" value=" 返 回 "></td>
+    </tr>
+	</form>
+  </table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>

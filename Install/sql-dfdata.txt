@@ -1,0 +1,123 @@
+INSERT INTO `#@__arcmodel` (`id`, `nid`, `typename`, `titlename`, `fieldset`, `addtable`, `issystem`, `status`) VALUES
+(1, 'article', '文章', '文章标题', '<fieldset>\r\n<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field name="body" tag="editor" id="Content" group="basic" style\r\n="width:800px;height:300px;" alt="正文内容"/>\r\n</fieldset>', 'addonarticle', 0, 0),
+(2, 'download', '下载', '下载标题', '<fieldset>\r\n<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field name="soft_author" tag="input" type="text"  id="soft_author" size="20" group="basic" alt="软件作者" value=''匿名''/>\r\n<field name="soft_nature" tag="radio"  id="soft_nature" value=''授权免费,开源软件,共享软件,商业软件'' group="basic" alt="软件性质"/>\r\n<field name="soft_version" tag="input" type="text"  id="soft_version" size="20" group="basic" alt="软件版本" value=''1.0''/>\r\n<field name="soft_lang" tag="select"  id="soft_nature" value=''简体中文,繁体中文,英文,多国语''  group="basic" alt="软件语言"/>\r\n<field name="soft_platform" tag="checkbox" id="soft_platform" value=''xp,win2003,vista,win7,win8,linux,unix'' group="basic" alt="软件平台" src="./Public/Model/download/selectall.html"/>\r\n<field name="soft_size" tag="input" type="text"  id="soft_size" size="20" group="basic" alt="软件大小（KB）" value=''0''/>\r\n<field name="soft_contact" tag="input" type="text"  id="soft_contact" size="20" group="basic" alt="联系人" value=''暂无''/>\r\n<field name="soft_downloadnum" tag="input" type="text"  id="soft_downloadnum" size="20" group="basic" alt="下载次数" value=''1'' src="./Public/Model/download/upload.html"/>\r\n<field name="downloadurl" tag="textarea"  id="downloadurl" group="basic" style="width:800px;height:100px;" alt="下载地址（多个地址请换行）"/>\r\n<field name="body" tag="editor" id="Content" group="basic" style="width:800px;height:300px;" alt="下载介绍" src="./Public/Model/download/docheck.html"/>\r\n</fieldset>', 'addondownload', 1, 1),
+(3, 'job', '招聘', '招聘标题', '<fieldset>\r\n<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field name="job_num" tag="input" type="text"  id="job_num" size="20" group="basic" alt="招聘人数" value=''1''/>\r\n<field name="job_money" tag="input"  size=''50'' id="job_money" value=''面议''  group="basic" alt="工作薪水"/>\r\n<field name="job_lang" tag="input"  id="job_lang" value=''不限'' group="basic" alt="语言要求" size=''50''/>\r\n<field name="job_degree" tag="radio" type="text"  id="job_degree"  group="basic" alt="学历要求" value=''不限,小学,初中,高中,中专,大专,专科,本科,硕士,博士,博士后''/>\r\n<field name="job_job" tag="input"  size=''50'' id="job_job" value=''干事''  group="basic" alt="职位职能"/>\r\n<field name="job_year" tag="radio" id="job_year" value=''不限,半年,一年,两年,三年,四年,五年'' group="basic" alt="工作年限" />\r\n<field name="body" tag="editor" id="Content" group="basic" style="width:800px;height:300px;" alt="职位详细描述" />\r\n</fieldset>', 'addonjob', 1, 1),
+(5, 'slide', '幻灯', '幻灯标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''editor'' group=''basic'' name=''body'' id=''body'' value='''' alt=''幻灯描述''  style="width:800px;height:300px;"/>\r\n<field tag=''insertpic'' group=''basic'' name=''slideurl'' id=''slideurl'' value='''' alt=''幻灯图'' />\r\n</fieldset>', 'addonslide', 1, 0),
+(6, 'diybg', '背景', '背景标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''insertfile'' group=''basic'' name=''url'' id=''url'' value='''' alt=''背景地址'' />\r\n<field tag=''insertpic'' group=''basic'' name=''img'' id=''img'' value='''' alt=''背景缩略图'' />\r\n</fieldset>', 'addondiybg', 1, 0),
+(7, 'diymusic', '音乐', '音乐标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''insertfile'' group=''basic'' name=''url'' id=''url'' value='''' alt=''音乐地址'' />\r\n<field tag=''insertpic'' group=''basic'' name=''pic'' id=''pic'' value='''' alt=''音乐缩略图'' />\r\n<field tag=''inserturl'' group=''basic'' name=''link'' id=''link'' value='''' alt=''下载地址'' />\r\n</fieldset>', 'addondiymusic', 1, 0),
+(8, 'diyvideo', '视频', '视频标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''insertpic'' group=''basic'' name=''img'' id=''img'' value='''' alt=''视频缩略图'' />\r\n<field tag=''input'' group=''basic'' name=''width'' id=''width'' value='''' alt=''视频宽度''  size="45"/>\r\n<field tag=''input'' group=''basic'' name=''height'' id=''height'' value='''' alt=''视频高度''  size="45"/>\r\n<field tag=''insertfile'' group=''basic'' name=''video'' id=''video'' value='''' alt=''视频地址'' />\r\n<field tag=''editor'' group=''basic'' name=''topic'' id=''topic'' value='''' alt=''视频描述''  style="width:800px;height:300px;"/>\r\n<field tag=''editor'' group=''basic'' name=''body'' id=''body'' value='''' alt=''视频内容''  style="width:800px;height:300px;"/>\r\n<field tag=''inserturl'' group=''basic'' name=''url'' id=''url'' value='''' alt=''跳转地址'' />\r\n</fieldset>', 'addondiyvideo', 1, 0),
+(9, 'diyphoto', '图片', '图片标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''editor'' group=''basic'' name=''body'' id=''body'' value='''' alt=''图片内容''  style="width:800px;height:300px;"/>\r\n<field tag=''insertpic'' group=''basic'' name=''pic'' id=''pic'' value='''' alt=''图片'' />\r\n<field tag=''inserturl'' group=''basic'' name=''url'' id=''url'' value='''' alt=''图片链接'' />\r\n<field tag=''insertpic'' group=''basic'' name=''spic'' id=''spic'' value='''' alt=''图片缩略图'' />\r\n</fieldset>', 'addondiyphoto', 1, 0),
+(10, 'diyinfo', '信息', '信息标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''editor'' group=''basic'' name=''topic'' id=''topic'' theme=''simple'' value='''' alt=''信息简介''  style="width:800px;height:300px;"/>\r\n<field tag=''editor'' group=''basic'' name=''body'' id=''body'' theme=''simple'' value='''' alt=''信息内容''  style="width:800px;height:300px;"/>\r\n<field tag=''insertpic'' group=''basic'' name=''simg'' id=''simg'' value='''' alt=''信息缩略图'' />\r\n<field tag=''input'' group=''basic'' name=''url'' id=''url'' value='''' alt=''跳转链接''  size="45"/>\r\n<field tag=''input'' group=''basic'' name=''open'' id=''open'' value='''' alt=''信息打开方式''  size="45"/>\r\n<field tag=''insertpic'' group=''basic'' name=''img'' id=''img'' value='''' alt=''信息图片'' />\r\n<field tag=''input'' group=''basic'' name=''ywidth'' id=''ywidth'' value='''' alt=''信息宽度''  size="45"/>\r\n<field tag=''input'' group=''basic'' name=''yheight'' id=''yheight'' value='''' alt=''信息宽度''  size="45"/>\r\n</fieldset>', 'addondiyinfo', 1, 0),
+(11, 'diyintro', '简介', '简介标题', '<fieldset>		<field name="redirecturl" tag="input" type="text"  id="redirecturl" size="50" group="basic" alt="跳转地址"/>\r\n<field tag=''editor'' group=''basic'' name=''body'' id=''body'' value='''' alt=''简介内容''  style="width:800px;height:300px;"/>\r\n<field tag=''insertpic'' group=''basic'' name=''pic'' id=''pic'' value='''' alt=''简介缩略图'' />\r\n</fieldset>', 'addondiyintro', 1, 0);
+
+
+INSERT INTO `#@__config_group` (`id`, `groupname`) VALUES
+(1, '全局配置'),
+(2, '用户配置'),
+(3, '功能配置'),
+(4, '其它配置');
+
+INSERT INTO `#@__config` (`id`, `varname`, `info`, `groupid`, `type`, `value`, `morevalue`) VALUES
+(1, 'cfg_basehost', '站点根网址：', 1, 'string', 'http://localhost', ''),
+(2, 'cfg_indexurl', '网页主页链接：', 1, 'string', '/', ''),
+(3, 'cfg_indexname', '主页链接名：', 1, 'string', '主页', ''),
+(4, 'cfg_webname', '网站名称：', 1, 'string', 'PPPON-无界', ''),
+(5, 'cfg_df_style', '模板默认风格：', 1, 'string', 'default', ''),
+(6, 'cfg_powerby', '网站版权信息：', 1, 'textarea', 'Copyright &copy; 2011-2013 pppon.com 无界科技 版权所有', ''),
+(25, 'cfg_html_editor', 'Html编辑器', 3, 'string', 'kindeditor', 'kindeditor'),
+(7, 'cfg_keywords', '站点默认关键字：', 1, 'string', 'PPPON', ''),
+(8, 'cfg_description', '站点描述：', 1, 'textarea', '', ''),
+(9, 'cfg_beian', '网站备案号：', 1, 'string', '', ''),
+(10, 'cfg_mb_open', '是否开启会员功能：', 2, 'radio', '0', '开启,关闭'),
+(11, 'cfg_mb_sendall', '是否开放会员对自定义模型投稿： ', 2, 'radio', '0', '开启,关闭'),
+(21, 'cfg_money_articledel', '取消审核通过扣除积分', 2, 'string', '2', ''),
+(13, 'cfg_mb_max', '会员附件总大小限制(MB)： ', 2, 'string', '500', ''),
+(14, 'cfg_mb_notallow', '不允许注册的会员id： ', 2, 'textarea', 'www,bbs,ftp,mail,user,users,admin,administrator', ''),
+(15, 'cfg_mb_idmin', '用户id最小长度：', 2, 'string', '3', ''),
+(16, 'cfg_mb_pwdmin', '用户密码最小长度： ', 2, 'string', '3', ''),
+(17, 'cfg_mb_spacesta', '会员使用权限开通状态', 2, 'radio', '0', '邮件验证,手工审核,无限制'),
+(24, 'cfg_adminemail', '网站发信EMAIL： ', 3, 'string', 'admin@pppon.com', ''),
+(18, 'cfg_md_mailtest', '是否限制Email只能注册一个帐号： ', 2, 'radio', '1', '是,否'),
+(19, 'cfg_money_reg', '注册赠送积分', 2, 'string', '10', ''),
+(12, 'cfg_mb_allowreg', '是否允许新会员注册： ', 2, 'radio', '0', '是,否'),
+(20, 'cfg_money_articleadd', '成功发布文章赠送积分', 2, 'string', '2', ''),
+(22, 'cfg_cmspath', 'CMS安装目录： ', 3, 'string', '/', ''),
+(23, 'cfg_cookie_encode', 'cookie加密码： ', 3, 'string', 'KcYQt2689M', ''),
+(26, 'cfg_list_symbol', '栏目位置的间隔符号： ', 3, 'string', ' > ', ' > '),
+(27, 'cfg_smtp_server', 'smtp服务器： ', 3, 'string', 'smtp.126.com', 'smtp.qq.com'),
+(28, 'cfg_smtp_port', 'smtp服务器端口： ', 3, 'string', '25', '25'),
+(29, 'cfg_smtp_usermail', 'SMTP服务器的用户邮箱： ', 3, 'string', 'minglangasp@qq.com', 'minglangasp@qq.com'),
+(30, 'cfg_smtp_user', 'SMTP服务器的用户帐号： ', 3, 'string', 'pengyong881215', 'pppon'),
+(31, 'cfg_smtp_password', 'SMTP服务器的用户密码： ', 3, 'string', '123456', 'pppon'),
+(32, 'cfg_upload_switch', '删除文章文件同时删除相关附件文件：', 3, 'radio', '0', '是,否'),
+(33, 'cfg_rewrite', '是否使用伪静态： ', 3, 'radio', '1', '是,否'),
+(34, 'cfg_delete', '文章回收站(是/否)开启：', 3, 'radio', '0', '是,否'),
+(35, 'cfg_auot_description', '自动摘要长度（0-250，0表示不启用）： ', 4, 'string', '240', '240'),
+(36, 'cfg_rm_remote', '远程图片本地化： ', 4, 'radio', '0', '是,否'),
+(37, 'cfg_arc_dellink', '删除非站内链接： ', 4, 'radio', '0', '是,否'),
+(38, 'cfg_arc_autopic', '提取第一张图片作为缩略图：', 4, 'radio', '0', '是,否'),
+(39, 'cfg_arc_autokeyword', '自动提取关键字： ', 4, 'radio', '1', '是,否'),
+(40, 'cfg_check_title', '发布文档时是否检测重复标题： ', 4, 'radio', '0', '是,否'),
+(41, 'cfg_jump_once', '跳转网址是否直接跳转？（否则显示中转页）： ', 4, 'radio', '0', '是,否'),
+(42, 'cfg_df_dutyadmin', '默认责任编辑(dutyadmin)： ', 4, 'string', 'admin', 'admin'),
+(43, 'cfg_arc_click', '文档默认点击数(-1表示随机50-200)： ', 4, 'string', '-1', '-1'),
+(44, 'cfg_arcautosp', '(是/否)开启长文章自动分页： ', 4, 'radio', '0', '是,否'),
+(45, 'cfg_arcautosp_size', '文章自动分页大小（单位: K）： ', 4, 'string', '5', '5'),
+(46, 'cfg_wap_tpl_default', 'wap网站默认模板', 1, 'string', 'default', ''),
+(47, 'cfg_mobile', '是否开通Wap访问(是:开启 否:关闭)', 3, 'radio', '1', '是,否'),
+(48, 'cfg_cmsswitch', '网站临时关闭选项(是:开启网站 否:关闭网站)', 1, 'radio', '1', '是,否'),
+(49, 'cfg_cmsswitch_msg', '网站临时关闭原因', 1, 'textarea', '网站临时关闭!', '');
+
+INSERT INTO `#@__friendlink` (`id`, `title`, `content`, `pubdate`, `status`, `gid`, `img`) VALUES
+(1, 'PPPON', 'http://www.pppon.com', 1359186731, 1, 1, './Public/Common/Images/logo.png');
+
+INSERT INTO `#@__friendlink_group` (`id`, `name`) VALUES
+(1, '默认分类');
+
+INSERT INTO `#@__ad_group` (`id`, `name`) VALUES
+(1, '默认分类');
+
+INSERT INTO `#@__ad` VALUES ('1', '头部960x90巨幅广告', '<!-- 头部960x90巨幅广告 -->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/950x90.gif\" style=\"width:960px;height:90px\"/>', '1361849319', '1', '1');
+INSERT INTO `#@__ad` VALUES ('2', '文章页640x60', '<!--文章页640x60-->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/640x60.gif\"/>', '1361849373', '1', '1');
+INSERT INTO `#@__ad` VALUES ('3', '通用250x250', '<!--通用250x250-->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/250x250.gif\"/>', '1361849423', '1', '1');
+INSERT INTO `#@__ad` VALUES ('4', '通用728x90广告', '<!--通用728x90 广告-->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/728x90.gif\"/>', '1361849471', '1', '1');
+INSERT INTO `#@__ad` VALUES ('5', '468x60banner广告', '<!-- 468x60banner广告 -->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/468X60.gif\"/>', '1361849704', '1', '1');
+INSERT INTO `#@__ad` VALUES ('6', '120x60广告位', '<!--120x60广告位 -->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/120x60.gif\"/>', '1361849838', '1', '1');
+INSERT INTO `#@__ad` VALUES ('7', '250x60 广告位', '<!--250x60 广告位-->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/250x60.gif\"/>', '1361850919', '1', '1');
+INSERT INTO `#@__ad` VALUES ('8', '300x250广告位', '<!--300x250广告位 -->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/300x250.gif\"/>', '1361851102', '1', '1');
+INSERT INTO `#@__ad` VALUES ('9', '200x200广告位', '<!--200x200广告位-->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/200x200.gif\"/>', '1361851286', '1', '1');
+INSERT INTO `#@__ad` VALUES ('10', '250x300广告位', '<!-- 250x300广告位 -->\r\n<img src=\"http://oss.aliyuncs.com/waikucms/ad/250x300.gif\"/>', '1361859186', '1', '1');
+
+
+INSERT INTO `#@__member_rank` (`id`, `rankname`, `rankmoney`, `rankimg`, `groupid`) VALUES
+(1, '工兵', 0, '01.gif', 1),
+(2, '副班长', 10, '02.gif', 1),
+(3, '正班长', 20, '03.gif', 1),
+(4, '副排长', 30, '04.gif', 1),
+(5, '排长', 50, '05.gif', 1),
+(6, '副连长', 100, '06.gif', 1),
+(7, '连长', 150, '07.gif', 1),
+(8, '副营长', 220, '08.gif', 1),
+(9, '营长', 350, '09.gif', 1),
+(10, '副团长', 500, '10.gif', 1),
+(11, '团长', 750, '11.gif', 1),
+(12, '副旅长', 1000, '12.gif', 1),
+(13, '旅长', 1550, '13.gif', 1),
+(14, '副师长', 2150, '14.gif', 1),
+(15, '师长', 3150, '15.gif', 1),
+(16, '副军长', 5000, '16.gif', 1),
+(17, '军长', 6350, '17.gif', 1),
+(18, '副司令', 10000, '18.gif', 1),
+(19, '司令', 12750, '19.gif', 1),
+(20, '军委副主席', 15000, '20.gif', 1),
+(21, '军委主席', 17500, '21.gif', 1),
+(22, 'vip', 0, 'vip.gif', 2),
+(23, '管理员', 0, '31.gif', 3);
+
+
+INSERT INTO `#@__plugin` (`id`, `status`, `title`, `description`, `author`, `copyright`, `pubdate`) VALUES
+(1, 0, 'duoshuo', '多说评论插件', '将军', '歪酷CMS', 0),
+(2, 0, 'guestbook', '歪酷留言本插件', '将军', '歪酷CMS', 0),
+(3, 0, 'rss', '站点RSS订阅插件', '将军', '歪酷CMS', 0),
+(4, 0, 'sitemap', '站点地图插件', '将军', '歪酷CMS', 0),
+(5, 0, 'rewritehelper', '伪静态助手插件', '将军', '歪酷CMS', 0);

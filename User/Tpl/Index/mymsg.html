@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{$GLOBALS['cfg_webname']}-站内短消息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="会员中心">
+    <meta name="author" content="歪酷CMS">
+    <link href="__PUBLIC__/User/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="__PUBLIC__/User/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+	<link href="__PUBLIC__/Editor/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <include file="Public:head"/>
+    <div class="container-fluid">
+      <div class="row-fluid">
+       <include file="Public:left"/>
+		<div class="span9">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand">短消息</a>
+					<ul class="nav">
+		<li class="active"><a href="{:U('Index/msg')}">收件箱</a></li>
+		<li><a href="{:U('Index/msg_put')}">发件箱</a></li>
+		<li><a href="{:U('Index/msg_send')}">发送短消息</a></li>
+		</ul>
+				</div>
+			</div>
+		</div>
+        <div class="span9">
+		<form name="myform" id="myform" action="{:U('Index/delall?method=get')}" onsubmit="return checkselectId()" method="post">
+		<table class="table table-striped table-bordered">
+		<thead>
+		<tr>
+		<th width='8%'>批处理</th>
+		<th width='60%'>标题</th>
+		<th width='8%'>状态</th>
+		<th width='14%'>时间</th>
+		<th width='10%'>操作</th>
+		</tr>
+		</thead>
+		<volist id="vo" name="list">
+		<tr>
+		<td><input type="checkbox" name='id[]' value="{$vo.id}" class='ids' /></td>
+		<td><a href="{:U('Index/msg_read?id=')}{$vo.id}">{$vo.title}</a></td>
+		<td>
+		<eq name='vo.tostatus' value='0'><p class="muted">已读</p></eq>
+		<eq name='vo.tostatus' value='1'><p class="text-info" ><strong>未读</strong></p></eq>
+		</td>
+		<td>{$vo.pubdate|date="Y-m-d H:i:s",###}</td>
+		<td><a onclick="onajax('{$vo.id}')" href="javascript:;">删除</a></td>
+		</tr>
+		</volist>
+		<tr>
+		<td colspan='5'><input name="chkAll" type="checkbox" id="chkAll" onClick="CheckAll(this.form)" value="checkbox">全选
+		&nbsp;&nbsp;
+		<input name="Del" type="submit" class="btn btn-inverse btn-mini"  id="Del" value="未读" onclick="alertcheck()">
+		<input name="Del" type="submit" class="btn btn-primary btn-mini"  id="Del" value="已读" onclick="alertcheck()">
+		<input name="Del" type="submit" class="btn btn-mini"  id="Del" value="删除" onclick="alertcheck()">
+		</td></tr>
+		</table>
+		</form>
+		<div class="pagination pagination-right">
+		<ul>
+		{$page}
+		</ul>
+		</div>
+		</div>
+	 </div>
+      <hr/>
+    <include file="Public:footer"/>
+    </div>
+	<script charset="utf-8" src="__PUBLIC__/Common/Jquery/Jquery.js"></script>
+	<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=twitter"></script>
+	<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script> 
+	<script>
+	function onajax(id)
+	{
+		$.post("{:U('Index/ajax?method=get')}", { id: id},
+		function(data){
+			window.location.reload(true);
+		});
+	}
+	 function unselectall(thisform){
+        if(thisform.chkAll.checked){
+            thisform.chkAll.checked = thisform.chkAll.checked&0;
+        }   
+    }
+    function CheckAll(thisform){
+        for (var i=0;i<thisform.elements.length;i++){
+            var e = thisform.elements[i];
+            if (e.Name != "chkAll"&&e.disabled!=true)
+                e.checked = thisform.chkAll.checked;
+        }
+    }
+	function alertcheck()
+	{
+		if(checkselectId()==false)
+		{
+			$.dialog.alert('请勾选ID记录!');
+		}
+	}
+	function checkselectId()
+	{
+	var ch =  $('.ids');
+	var input = '';
+	for(var i=0; i<ch.length;i++)
+	{
+		if(ch[i].checked == true)
+		{
+			input += ch[i].value+',';
+		}       
+	}
+	if(input=='') return false;
+	return input;
+   } 
+	</script>
+  </body>
+</html>

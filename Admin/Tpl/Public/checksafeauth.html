@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>跳转提示</title>
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<import file= "Admin.js.admin,Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=simple"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+$(document).ready(function(){
+	artDialog.checksafeauth('安全密码验证','当前操作需要验证您的安全密码','http://doc.waikucms.com/list-32.html');
+});
+artDialog.checksafeauth = function(title, content, url) {
+	var input;
+	var value;
+	var pwdvalue;
+	return artDialog({
+		id: 'locking',
+		icon: 'warning',
+		drag: false,
+		resize: false,
+		title: title,
+		fixed: true,
+		lock: true,
+		opacity: 0,
+		content: ['<div style="margin-bottom:5px;font-size:12px">', content, '</div>', '<div>', '<div>', '<input value="', value, '" id="lockingverifyx" style="width:18em;padding:6px 4px" />', '<select name="select" id="art_select" style="padding:6px 4px"><option value="30">有效期:半小时</option><option value="1">有效期:即时</option><option value="10">有效期:10分钟</option><option value="20">有效期:20分钟</option><option value="60">有效期:1小时</option><option value="360">有效期:6小时</option><option value="720">有效期:12小时</option></select>','</div>', '<div style="margin-top:5px;font-size:12px;">', '<a href="' + url + '" target="_blank">忘记了安全密码?</a>', '</div>'].join(''),
+		init: function() {
+			input = this.DOM.content.find('input')[0];
+			input.select();
+			input.focus();
+			this.shake && this.shake();
+		},
+		ok: function(here) {
+			var xval = $('#lockingverifyx').val();
+			var ajax_select = $('#art_select').val();
+			if (xval == '') {
+				this.shake && this.shake();
+				input = this.DOM.content.find('input')[0];
+				input.select();
+				input.focus();
+				return false;
+			} else {
+				$.ajax({
+					type: "POST",
+					url: '{:U('Public/checksafeauthset')}',
+					data: "auth=" + xval+"&timeout="+ajax_select,
+					success: function(msg) {
+						//alert(msg);
+						if (msg == 0) {
+							artDialog.checksafeauth('安全密码验证', '当前操作需要提供安全密码验证', 'http://doc.waikucms.com/list-32.html');
+						}
+						if (msg == 2) {
+							parent.parent.window.location.href = '{:U('Public/loginout')}';
+						}
+						if (msg == 1) {
+							window.location.reload(true);
+						}
+					}
+				});
+			}
+		},
+		cancel: false
+	});
+};
+</script>
+</head>
+<body>
+</body>
+</html>

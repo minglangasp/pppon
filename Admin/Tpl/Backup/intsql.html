@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="__PUBLIC__/Admin/images/Admin_css.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="__PUBLIC__/Admin/images/myfav.ico" type="image/x-icon" />
+<style> 
+.classlist {float:left;margin:0;padding:0;}
+.classlist ul {float:left;margin:0;padding:0;}
+.classlist li {margin:0;padding:0;padding:3px 0;border-bottom:1px solid #ffffff;}
+.classlist li span {float:right;margin-top:-3px;}
+.classlist .bigclass {font-weight:bold;clear:both;list-style:none;margin:5px 0;}
+.classlist .yaoclass {font-weight:normal;list-style:none;padding-left:10px;}
+</style>
+<import file="Admin.js.Jquery"/> 
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/jquery.artDialog.js?skin=green"></script>
+<script charset="utf-8" src="__PUBLIC__/Common/artDialog/extend.js"></script>
+<script>
+function jconfirm(str,url)
+{
+   $.dialog.confirm(str,function (){window.location.href=url;});
+}
+</script>
+<title>SQL执行器</title>
+</head>
+<body>
+<script>
+	function CheckForm()
+	{ 
+		if(EmptyCheckForm('sql','sql语句不能为空!','')) return false;
+	}
+	function EmptyCheckForm(id,value,set)
+	{
+		if($('#'+id).val()==set)
+		{
+			$.dialog({icon:'warning',content:value,ok:function(){ $('#' + id).focus();}});return true;
+		}
+		return false;
+	}
+</script>
+<table border="0" align="center" cellpadding="3" cellspacing="2" bgcolor="#FFFFFF" class="admintable">
+  <tr>
+    <td colspan="2" class="admintitle"> SQL执行器</td>
+  </tr>
+  <form action="{:U('Backup/dointsql')}" method="post" onsubmit="return CheckForm()">
+  <tr>
+    <td align="left" width="20%" height="25" bgcolor="f7f7f7">&nbsp;SQL语句：</td>
+    <td align="left" height="25" bgcolor="f7f7f7"><textarea name="sql" id="sql" style="width:90%;height:200px;"></textarea></td>
+  </tr>
+  <tr>
+    <td align="left" height="25" bgcolor="f7f7f7">&nbsp;注意事项：</td>
+    <td align="left" height="25" bgcolor="f7f7f7">除非确定您的SQL语句安全，否则不要轻易在此处运行!执行的SQL语句为原生sql</td>
+  </tr>
+   <tr>
+    <td align="left" height="25" bgcolor="f7f7f7">&nbsp;使用范例：</td>
+    <td align="left" height="25" bgcolor="f7f7f7">
+	<p>
+	1.清空一个数据表： Truncate table wk_xxx<br/>
+	2.表的修复与优化：Repair TABLE wk_xxx,optimize TABLE wk_xxx<br/>
+	3.常用删除操作：Delete From wk_xx Where id > 0
+	</p>
+	</td>
+  </tr>
+  <tr>
+    <td height="25" colspan="2" align="center" class="tabletd2"><input type="submit" name="Submit" class="bnt" value="执行SQL">&nbsp;&nbsp;<input name="Submit22" type="button" class="bnt" onClick="history.go(-1)"  value="返 回"></td>
+  </tr>
+  </form>
+</table>
+<div style="text-align:center;margin:10px;">
+<hr>
+<include file="Index:copy" /> 
+</div>
+</body>
+</html>
