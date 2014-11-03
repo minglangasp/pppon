@@ -1,0 +1,34 @@
+﻿@charset "utf-8";
+body {
+margin:0;
+background-color:#ffffff;
+overflow:hidden;
+}
+
+* {margin:0; padding:0;}
+.des{display:none;}
+li{list-style-type:none;}
+.DFull{filter:alpha(opacity=80);  -moz-opacity:0.8; opacity:0.8; overflow:hidden;background-color:White; height:678px;  Z-INDEX:909; POSITION:absolute;display:none;}
+.DInfo {-webkit-user-select:none;-moz-user-select:none;border:solid 2px #cccccc; background-color:#eeeeee;position:absolute; height:468px; padding-top:10px; width:798px;Z-INDEX:990; color:#999999; font-size:12px; font-family:Verdana,宋体;display:none;}
+.DInfo .utitle{width:760px;height:100px; margin-left:18px;}
+.DInfo .utitle li{float:left}
+.DInfo .utitle .lititle{font-size:14px; color:#000000;line-height:30px; font-weight:bold;}
+.DInfo .utitle .lititle span{font-size:12px; color:#999999;  font-weight:bold;}
+.DInfo .utitle .liclose{float:right;line-height:30px;}
+.DInfo .utitle .liclose a{background:url(WClose.gif) no-repeat 10px 4px;display:inline-block;padding-right:0px;*padding-right:10px !important;_padding-right:30px;width:90px; height:23px;}
+.DInfo .utitle .liline {width:100%; height:1px; overflow:hidden; background-color:#cccccc;margin-bottom:10px;}
+.DInfo .utitle .liinfo {width:740px; height:400px; line-height:25px; overflow:hidden; color:#555555;}
+.DInfo .utitle .liScrollbar{float:right;width:10; height:400px;background-color:#FFF;position:relative;}
+.DInfo .utitle .liScrollbar .ScrollbarHandle {position:absolute;width:10px; cursor:pointer; cursor:hand; top:0px; height:150px;background-color: #cccccc; display:block;Z-INDEX:999;}
+.vidmes {padding-top:10px; word-break:break-all;font-size:12px; font-family:Verdana;宋体;line-height;30px;align:left;color:#555555;}
+
+a:link{text-decoration:none;color:#555555;} 
+a:visited{text-decoration:none;color:#555555;} 
+a:hover{text-decoration:none;color:#000000;}
+a:active{text-decoration:none;color:#000000;}
+
+.TheMyA{display:none;}
+.appfull{filter:alpha(opacity=90);-moz-opacity:0.9;opacity:0.9;width:100%;top:0px;height:100%;left:0px; Z-INDEX:1; POSITION:absolute;background-color:#ffffff;display:none;}
+.appclose{background:url(WClose.gif) no-repeat;display:none;width:80px;height:19px;top:16px;right:20px;POSITION:absolute;Z-INDEX:3;cursor:pointer;}
+
+.ycnone{display:none;}

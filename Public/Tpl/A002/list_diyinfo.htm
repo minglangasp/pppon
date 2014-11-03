@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<InfoList>
+<wk:arclist getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addondiyinfo` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$topic = $row[topic];
+	$body = $row[body];
+	$simg  = $row[simg];
+	$url = $row[url];
+	$open  = $row[open];
+	$img  = $row[img];
+	$ywidth  = $row[ywidth];
+	$yheight  = $row[yheight];
+};
+?>
+<Info>
+<date><field name='pubdate' function="date('Y-m-d',@me)" /></date>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<topic><![CDATA[<?php echo $body; ?>]]></topic>
+<description><![CDATA[<?php echo $topic; ?>]]></description>
+<SImg><?php echo $simg; ?></SImg>
+<url><?php echo $url; ?></url>
+<Open><?php echo $open; ?></Open>
+<Img><?php echo $img; ?></Img>
+<YWidth><?php echo $ywidth; ?></YWidth>
+<YHeight><?php echo $yheight; ?></YHeight>
+<InfoID><?php echo $id; ?></InfoID>
+</Info>
+</wk:arclist>
+</InfoList>
