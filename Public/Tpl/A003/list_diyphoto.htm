@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gallery>
+<wk:arclist paging='1' pagesize='20' mod="5" getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `wk_addondiyphoto` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$url = $row[url];
+	$body = $row[body];
+	$pic = $row[pic];
+	$spic = $row[spic];
+}
+?>
+<sort>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<url><?php echo $url; ?></url>
+<pic1><?php echo $pic; ?></pic1>
+<pic2><?php echo $spic; ?></pic2>
+<desc><![CDATA[<?php echo $body; ?>]]></desc>
+</sort>
+</wk:arclist>
+</gallery>

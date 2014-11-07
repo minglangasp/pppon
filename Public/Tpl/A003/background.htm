@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<backgrounds>
+<wk:arctype type='top' modelid='6' row='10'>
+<wk:arclist typeid='~typeid~' pagesize='20' getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addondiybg` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$tmb = $row[img];
+	$url = $row[url];
+}
+?>
+<background tmb="<?php echo $tmb; ?>"><?php echo $url; ?></background>
+</wk:arclist>
+</wk:arctype>
+</backgrounds>

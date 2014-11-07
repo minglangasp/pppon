@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?php 
+	$id = $_GET['id'] ;
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."arctype` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$content = $row[content];
+}
+?>
+<content><![CDATA[<?php echo $content; ?>]]><content>
+

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<wk:arclist row='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addondiyvideo` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$url = $row[url];
+	$body = $row[body];
+	$topic = $row[topic];
+	$img = $row[img];
+	$video = $row[video];
+	$width = $row[width];
+	$height = $row[height];
+}
+?>
+<video>
+<title><field name='title' function="cn_substr(@me,0,38,false)"/></title>
+<video><?php echo $video; ?></video>
+<width><?php echo $width; ?></width>
+<height><?php echo $height; ?></height>
+<description><![CDATA[<?php echo $body; ?>]]></description>
+</video>
+</wk:arclist>

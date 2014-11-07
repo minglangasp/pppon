@@ -1,0 +1,41 @@
+<?php
+//$imgPath = "D:\phpnow\htdocs/waiku/Public/Uploads/image/20140810/c6795902.jpg";
+//$localpath = getimagesize($imgPath);
+$localpath = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+//print_r($size);
+//die();
+?>
+<?xml version="1.0" encoding="utf-8" ?>
+<home>
+<wk:arclist paging='1' pagesize='20' mod="5" getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addonslide` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$slideurl = $row[slideurl];
+	$slideredirecturl = $row[redirecturl];
+	$slidebody = $row[body];
+	$arr = getimagesize($localpath.$slideurl);
+	//print_r($arr);
+	//die();
+	$iwidth = $arr[0];
+	/**
+	 * 这里$arr为一个数组类型
+	 * $arr[0] 为图像的宽度
+	 * $arr[1] 为图像的高度
+	 * $arr[2] 为图像的格式，包括jpg、gif和png等
+	 * $arr[3] 为图像的宽度和高度，内容为 width="xxx" height="yyy"
+	 */
+	}
+?>
+<item>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<images><?php echo $slideurl; ?></images>
+<delay><wk:tplvar name='slidetime'/>000</delay>
+<links><?php echo $slideredirecturl; ?></links>
+<imgWidth><?php echo $iwidth; ?></imgWidth>
+<text><![CDATA[<?php echo $slidebody; ?>]]></text>
+</item>
+</wk:arclist>
+</home>

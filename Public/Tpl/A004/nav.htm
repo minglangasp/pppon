@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu profileType="56609593"  languageType="<wk:tplvar name='lang'/>"  memberState="0"  logo="<wk:tplvar name="logo" />"  linkName="<wk:tplvar name='powerby'/>" link="<wk:tplvar name='powerlink'/>">
+<wk:arctype type='top' display='2,0,4' row='10' vo='a' field="id,fid,seotitle,keywords"> 
+<mainmenu>
+<title><![CDATA[<field name='typename' fromvo='a'/>]]></title>
+<content><?php 
+$id = $_field['id'];
+$sql = "SELECT * FROM `".C('DB_PREFIX')."arctype` WHERE `id`='$id'";
+$query = mysql_query($sql);
+$row=mysql_fetch_array($query);
+$sql2 = "SELECT * FROM `".C('DB_PREFIX')."arctype` WHERE `fid`='$id'";
+$query2 = mysql_query($sql2);
+$row2=mysql_fetch_array($query2);
+//print_r($row2);
+//echo $row['display'];
+if (($row2['fid'] === $id) && ($row['display'] === "4")) {
+    echo "submenu";
+} elseif ($row['modeltype'] === "2"){
+    echo $row['linkurl'];
+} else {
+    echo "swf/";
+?><field name='seotitle' fromvo='a'/><field name='keywords' fromvo='a'/>
+<?php 
+    echo ".swf?$id";
+}
+?></content>   
+<submenu><wk:arctype typeid='~typeid~' row='10' field="id,fid,keywords,seotitle,description,sortrank" display='2,0'  vo='d' fromvo='a'>
+<item>
+<title><![CDATA[<field name='typename'/>]]></title>
+<content><?php 
+$id = $_field['id'];
+$sql = "SELECT * FROM `".C('DB_PREFIX')."arctype` WHERE `id`='$id'";
+$query = mysql_query($sql);
+$row=mysql_fetch_array($query);
+if ($row['fid'] === $id) {
+    echo "submenu";
+} elseif ($row['modeltype'] === "2"){
+    echo $row['linkurl'];
+} else {
+    echo "swf/";
+?><field name='seotitle' fromvo='d'/><field name='keywords' fromvo='d'/>
+<?php 
+    echo ".swf?";
+}
+?><field name='typesid'/></content>
+</item>		  
+</wk:arctype></submenu>
+</mainmenu>
+</wk:arctype>
+</menu>
+
+

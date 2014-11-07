@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<playlist>
+<wk:arctype type='top' modelid='7' row='10'>
+<wk:arclist typeid='~typeid~' pagesize='20' getall='1'>
+<?php 
+	$id = $_field['id'];
+	$sql = "SELECT * FROM `".C('DB_PREFIX')."addondiymusic` WHERE `id`='$id'";
+	$query = mysql_query($sql);
+	while($row=mysql_fetch_array($query)){
+	$pic = $row[pic];
+	$url = $row[url];
+}
+?>
+<music>
+<title><![CDATA[<field name='title' function="cn_substr(@me,0,38,false)"/>]]></title>
+<url><?php echo $url; ?></url>
+</music>
+</wk:arclist>
+</wk:arctype>
+</playlist>
